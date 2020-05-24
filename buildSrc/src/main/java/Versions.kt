@@ -1,7 +1,4 @@
 object Versions {
-    const val gradlePlugin = "3.6.3"
-    const val kotlinGradlePlugin = "1.3.71"
-
     const val applicationId = "io.github.emusute1212.makasetechoice"
     const val compileSdk = 29
     const val buildTools = "29.0.2"
