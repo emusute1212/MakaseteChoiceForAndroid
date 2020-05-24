@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion(29)
-    buildToolsVersion = "29.0.2"
+    compileSdkVersion(Versions.compileSdk)
+    buildToolsVersion = Versions.buildTools
 
     defaultConfig {
-        applicationId = "io.github.emusute1212.makasetechoice"
-        minSdkVersion(23)
-        targetSdkVersion(29)
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Versions.applicationId
+        minSdkVersion(Versions.minSdk)
+        targetSdkVersion(Versions.targetSdk)
+        versionCode = Versions.MakaseteChoice.code
+        versionName = Versions.MakaseteChoice.name
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,11 +31,11 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.71")
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    implementation(Dependencies.Kotlin.stdLib)
+    implementation(Dependencies.AndroidX.appCompat)
+    implementation(Dependencies.AndroidX.ktx)
+    implementation(Dependencies.AndroidX.constraintLayout)
+    testImplementation(Dependencies.Test.jUnit)
+    androidTestImplementation(Dependencies.AndroidX.Test.runner)
+    androidTestImplementation(Dependencies.AndroidX.Test.espresso)
 }
