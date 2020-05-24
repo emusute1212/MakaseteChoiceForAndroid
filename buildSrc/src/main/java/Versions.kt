@@ -28,6 +28,10 @@ object Versions {
         }
     }
 
+    object JetPack {
+        const val navigation = "2.2.2"
+    }
+
     object Test {
         const val jUnit = "4.12"
     }

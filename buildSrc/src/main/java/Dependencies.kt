@@ -23,6 +23,14 @@ object Dependencies {
         }
     }
 
+    object JetPack {
+        object Navigation {
+            const val core =
+                "androidx.navigation:navigation-fragment-ktx:${Versions.JetPack.navigation}"
+            const val ktx = "androidx.navigation:navigation-ui-ktx:${Versions.JetPack.navigation}"
+        }
+    }
+
     object Test {
         const val jUnit = "junit:junit:${Versions.Test.jUnit}"
     }

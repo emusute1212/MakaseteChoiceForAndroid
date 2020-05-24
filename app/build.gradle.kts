@@ -31,10 +31,23 @@ android {
 }
 
 dependencies {
+    // Kotlin
     implementation(Dependencies.Kotlin.stdLib)
+
+    // AppCompat
     implementation(Dependencies.AndroidX.appCompat)
+
+    // Ktx
     implementation(Dependencies.AndroidX.ktx)
+
+    // Ui
     implementation(Dependencies.AndroidX.constraintLayout)
+
+    // Navigation
+    implementation(Dependencies.JetPack.Navigation.core)
+    implementation(Dependencies.JetPack.Navigation.ktx)
+
+    // Test
     testImplementation(Dependencies.Test.jUnit)
     androidTestImplementation(Dependencies.AndroidX.Test.runner)
     androidTestImplementation(Dependencies.AndroidX.Test.espresso)
