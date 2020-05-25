@@ -31,6 +31,18 @@ object Dependencies {
         }
     }
 
+    object ThirdParty {
+        object Dagger {
+            const val android = "com.google.dagger:dagger-android:${Versions.ThirdParty.dagger}"
+            const val androidSupport =
+                "com.google.dagger:dagger-android-support:${Versions.ThirdParty.dagger}"
+            const val androidProcessor =
+                "com.google.dagger:dagger-android-processor:${Versions.ThirdParty.dagger}"
+            const val compiler =
+                "com.google.dagger:dagger-compiler:${Versions.ThirdParty.dagger}"
+        }
+    }
+
     object Test {
         const val jUnit = "junit:junit:${Versions.Test.jUnit}"
     }

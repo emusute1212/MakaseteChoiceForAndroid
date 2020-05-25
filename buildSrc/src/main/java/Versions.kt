@@ -32,6 +32,10 @@ object Versions {
         const val navigation = "2.2.2"
     }
 
+    object ThirdParty {
+        const val dagger = "2.27"
+    }
+
     object Test {
         const val jUnit = "4.12"
     }

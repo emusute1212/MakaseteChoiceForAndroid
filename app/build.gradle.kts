@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 android {
@@ -46,6 +47,12 @@ dependencies {
     // Navigation
     implementation(Dependencies.JetPack.Navigation.core)
     implementation(Dependencies.JetPack.Navigation.ktx)
+
+    // Dagger2
+    implementation(Dependencies.ThirdParty.Dagger.android)
+    implementation(Dependencies.ThirdParty.Dagger.androidSupport)
+    kapt(Dependencies.ThirdParty.Dagger.androidProcessor)
+    kapt(Dependencies.ThirdParty.Dagger.compiler)
 
     // Test
     testImplementation(Dependencies.Test.jUnit)
