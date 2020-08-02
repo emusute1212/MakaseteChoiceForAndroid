@@ -41,6 +41,13 @@ object Dependencies {
             const val compiler =
                 "com.google.dagger:dagger-compiler:${Versions.ThirdParty.dagger}"
         }
+
+        object Groupie {
+            const val core = "com.xwray:groupie:${Versions.ThirdParty.groupie}"
+            const val kotlinAndroidExtension =
+                "com.xwray:groupie-kotlin-android-extensions:${Versions.ThirdParty.groupie}"
+            const val databinding = "com.xwray:groupie-databinding:${Versions.ThirdParty.groupie}"
+        }
     }
 
     object Test {

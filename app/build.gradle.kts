@@ -54,6 +54,11 @@ dependencies {
     kapt(Dependencies.ThirdParty.Dagger.androidProcessor)
     kapt(Dependencies.ThirdParty.Dagger.compiler)
 
+    // Groupie
+    implementation(Dependencies.ThirdParty.Groupie.core)
+    implementation(Dependencies.ThirdParty.Groupie.kotlinAndroidExtension)
+    implementation(Dependencies.ThirdParty.Groupie.databinding)
+
     // Test
     testImplementation(Dependencies.Test.jUnit)
     androidTestImplementation(Dependencies.AndroidX.Test.runner)

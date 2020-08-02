@@ -34,6 +34,7 @@ object Versions {
 
     object ThirdParty {
         const val dagger = "2.27"
+        const val groupie = "2.8.1"
     }
 
     object Test {
