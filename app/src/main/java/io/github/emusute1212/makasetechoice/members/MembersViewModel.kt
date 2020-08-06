@@ -12,7 +12,7 @@ class MembersViewModel : ViewModel() {
         get() = _members
     val isEmptyMember = MediatorLiveData<Boolean>().also {
         it.addSource(members) { members ->
-            members.isEmpty()
+            it.value = members.isEmpty()
         }
     }
 }

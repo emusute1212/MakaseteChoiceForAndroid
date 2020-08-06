@@ -14,6 +14,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/noto_sansjp_bold"
         android:text="@string/nothing_member_text"
+        android:textAlignment="center"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/high_font_size"
         app:layout_constraintBottom_toBottomOf="parent"
