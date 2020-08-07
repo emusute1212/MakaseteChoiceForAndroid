@@ -37,6 +37,10 @@ android {
         isEnabled = true
     }
 
+    viewBinding {
+        isEnabled = true
+    }
+
 }
 
 dependencies {
@@ -65,7 +69,7 @@ dependencies {
     // Groupie
     implementation(Dependencies.ThirdParty.Groupie.core)
     implementation(Dependencies.ThirdParty.Groupie.kotlinAndroidExtension)
-    implementation(Dependencies.ThirdParty.Groupie.databinding)
+    implementation(Dependencies.ThirdParty.Groupie.viewBinding)
 
     // Test
     testImplementation(Dependencies.Test.jUnit)

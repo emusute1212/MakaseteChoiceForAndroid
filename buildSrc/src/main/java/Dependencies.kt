@@ -46,7 +46,7 @@ object Dependencies {
             const val core = "com.xwray:groupie:${Versions.ThirdParty.groupie}"
             const val kotlinAndroidExtension =
                 "com.xwray:groupie-kotlin-android-extensions:${Versions.ThirdParty.groupie}"
-            const val databinding = "com.xwray:groupie-databinding:${Versions.ThirdParty.groupie}"
+            const val viewBinding = "com.xwray:groupie-viewbinding:${Versions.ThirdParty.groupie}"
         }
     }
 
