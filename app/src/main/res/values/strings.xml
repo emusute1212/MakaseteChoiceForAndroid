@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MakaseteChoice</string>
     <string name="nothing_member_text">メンバーがいません。\n右下のボタンから\nメンバーを追加しましょう。</string>
+    <string name="input_member_name_hint">メンバーの名前を入力</string>
+    <string name="add">追加</string>
+    <string name="cancel">キャンセル</string>
 </resources>
