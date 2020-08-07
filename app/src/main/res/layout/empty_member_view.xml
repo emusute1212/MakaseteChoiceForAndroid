@@ -9,6 +9,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/ic_user_alt_slash"
+        android:tint="@color/colorBlack"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
