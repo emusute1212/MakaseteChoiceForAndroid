@@ -11,14 +11,6 @@ import androidx.fragment.app.DialogFragment
 import io.github.emusute1212.makasetechoice.R
 
 class AddMemberDialogFragment : DialogFragment() {
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return inflater.inflate(R.layout.dialog_add_member, container, false)
-//    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = dialog ?: Dialog(requireContext())
