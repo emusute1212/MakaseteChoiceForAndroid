@@ -4,6 +4,16 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="deletable"
+            type="Boolean" />
+
+        <variable
+            name="onDeleteMember"
+            type="io.github.emusute1212.makasetechoice.members.OnDeleteMember" />
+
         <variable
             name="member"
             type="io.github.emusute1212.makasetechoice.data.entity.Member" />
@@ -51,8 +61,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@null"
+            android:onClick="@{() -> onDeleteMember.delete(member)}"
             android:src="@drawable/ic_close"
             android:tint="@color/gray"
+            android:visibility="@{deletable ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

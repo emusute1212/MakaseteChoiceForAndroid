@@ -8,12 +8,15 @@ import io.github.emusute1212.makasetechoice.databinding.MemberItemViewBinding
 
 
 class MemberItem(
-    private val member: Member
+    private val member: Member,
+    private val onDeleteMember: OnDeleteMember? = null
 ) : BindableItem<MemberItemViewBinding>() {
     override fun getLayout(): Int = R.layout.member_item_view
 
     override fun bind(viewBinding: MemberItemViewBinding, position: Int) {
         viewBinding.member = member
+        viewBinding.deletable = onDeleteMember != null
+        viewBinding.onDeleteMember = onDeleteMember
     }
 
     override fun initializeViewBinding(view: View): MemberItemViewBinding {
