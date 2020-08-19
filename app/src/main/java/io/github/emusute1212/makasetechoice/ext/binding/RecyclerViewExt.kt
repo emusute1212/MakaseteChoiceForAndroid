@@ -8,7 +8,8 @@ import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.members.MemberItem
 
 @BindingAdapter("initMembers")
-fun RecyclerView.initMembers(list: List<Member>) {
+fun RecyclerView.initMembers(list: List<Member>?) {
+    if (list == null) return
     adapter = GroupAdapter<GroupieViewHolder>().also { adapter ->
         list.forEach { item ->
             adapter.add(MemberItem(item))
