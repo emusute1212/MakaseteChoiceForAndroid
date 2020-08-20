@@ -7,10 +7,12 @@ import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.databinding.MemberItemViewBinding
 
 
-class MemberItem(
+data class MemberItem(
     private val member: Member,
     private val onDeleteMember: OnDeleteMember? = null
-) : BindableItem<MemberItemViewBinding>() {
+) : BindableItem<MemberItemViewBinding>(
+    member.id.toLong()
+) {
     override fun getLayout(): Int = R.layout.member_item_view
 
     override fun bind(viewBinding: MemberItemViewBinding, position: Int) {

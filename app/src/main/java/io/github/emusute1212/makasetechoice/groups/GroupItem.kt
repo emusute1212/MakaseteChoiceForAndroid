@@ -3,18 +3,21 @@ package io.github.emusute1212.makasetechoice.groups
 import android.view.View
 import com.xwray.groupie.viewbinding.BindableItem
 import io.github.emusute1212.makasetechoice.R
-import io.github.emusute1212.makasetechoice.databinding.MemberItemViewBinding
+import io.github.emusute1212.makasetechoice.databinding.GroupItemViewBinding
 
 
-class GroupItem(
-) : BindableItem<MemberItemViewBinding>() {
-    override fun getLayout(): Int = R.layout.member_item_view
+data class GroupItem(
+    private val groupName: String
+) : BindableItem<GroupItemViewBinding>(
+    groupName.hashCode().toLong()
+) {
+    override fun getLayout(): Int = R.layout.group_item_view
 
-    override fun bind(viewBinding: MemberItemViewBinding, position: Int) {
-//        viewBinding.group = group
+    override fun bind(viewBinding: GroupItemViewBinding, position: Int) {
+        viewBinding.groupName = groupName
     }
 
-    override fun initializeViewBinding(view: View): MemberItemViewBinding {
-        return MemberItemViewBinding.bind(view)
+    override fun initializeViewBinding(view: View): GroupItemViewBinding {
+        return GroupItemViewBinding.bind(view)
     }
 }
