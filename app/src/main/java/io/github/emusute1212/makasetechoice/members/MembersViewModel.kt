@@ -14,6 +14,11 @@ class MembersViewModel @Inject constructor(
     private val _members = MutableLiveData<List<Member>>()
     val members: LiveData<List<Member>>
         get() = _members
+    val memberChoiceNumberList = MediatorLiveData<List<Int>>().also {
+        it.addSource(members) { members ->
+            it.value = members.mapIndexed { index, _ -> index }
+        }
+    }
     val isEmptyMember = MediatorLiveData<Boolean>().also {
         it.addSource(members) { members ->
             it.value = members.isEmpty()
