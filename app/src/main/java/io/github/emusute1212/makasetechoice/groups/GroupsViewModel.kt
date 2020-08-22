@@ -16,23 +16,24 @@ class GroupsViewModel @Inject constructor(
         get() = _groups
     val isEmptyGroups = MediatorLiveData<Boolean>().also {
         it.addSource(groups) { groups ->
-            it.value = groups.isEmpty()
+            it.value = groups.isNullOrEmpty()
         }
     }
     val splitNum = MutableLiveData(1)
 
     fun init() {
         // TODO This is mock
-        _groups.value = mapOf(
-            "グループ1" to listOf(
-                Member(1, "aaaaa"),
-                Member(2, "bbbb")
-            ),
-            "グループ2" to listOf(
-                Member(3, "cccc"),
-                Member(4, "dddd")
-            )
-        )
+//        _groups.value = mapOf(
+//            "グループ1" to listOf(
+//                Member(1, "aaaaa"),
+//                Member(2, "bbbb")
+//            ),
+//            "グループ2" to listOf(
+//                Member(3, "cccc"),
+//                Member(4, "dddd")
+//            )
+//        )
+        _groups.postValue(emptyMap())
     }
 
     fun choiceGroup(member: List<Member>) {

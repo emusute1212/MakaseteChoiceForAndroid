@@ -7,8 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.android.support.DaggerAppCompatActivity
+import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
 import io.github.emusute1212.makasetechoice.splash.SplashScreenFragment
+import io.github.emusute1212.makasetechoice.util.combine
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -17,6 +19,10 @@ class MainActivity : DaggerAppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val membersViewModel: MembersViewModel by viewModels {
+        viewModelFactory
+    }
+
+    private val groupsViewModel: GroupsViewModel by viewModels {
         viewModelFactory
     }
 
@@ -29,10 +35,13 @@ class MainActivity : DaggerAppCompatActivity() {
         val fragment = SplashScreenFragment().also {
             it.show(supportFragmentManager, SplashScreenFragment.FRAGMENT_TAG)
         }
-        membersViewModel.members.observe(this, Observer {
-            if (it == null) return@Observer
+        combine(false, membersViewModel.members, groupsViewModel.groups) { _, _, _ ->
+            true
+        }.observe(this, Observer {
+            if (!it) return@Observer
             fragment.dismissAllowingStateLoss()
         })
         membersViewModel.init()
+        groupsViewModel.init()
     }
 }

@@ -14,21 +14,22 @@ class MembersViewModel @Inject constructor(
     private val _members = MutableLiveData<List<Member>>()
     val members: LiveData<List<Member>>
         get() = _members
-    val memberChoiceNumberList = MediatorLiveData<List<Int>>().also {
-        it.addSource(members) { members ->
-            it.value = members.mapIndexed { index, _ -> index }
+    val memberChoiceNumberList = _members.map {
+        it.mapIndexed { index, _ ->
+            index
         }
     }
     val isEmptyMember = MediatorLiveData<Boolean>().also {
         it.addSource(members) { members ->
-            it.value = members.isEmpty()
+            it.value = members.isNullOrEmpty()
         }
     }
 
     fun init() {
         viewModelScope.launch(Dispatchers.IO) {
             delay(1000L)
-            _members.postValue(repository.loadMembers())
+//            _members.postValue(repository.loadMembers())
+            _members.postValue(emptyList())
         }
     }
 }
