@@ -12,9 +12,21 @@ object Dependencies {
 
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.AndroidX.appCompat}"
-        const val ktx = "androidx.core:core-ktx:${Versions.AndroidX.Ktx.core}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.AndroidX.constraintLayout}"
+
+        object Ktx {
+            const val core = "androidx.core:core-ktx:${Versions.AndroidX.Ktx.core}"
+            const val liveData =
+                "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.Ktx.liveData}"
+        }
+
+        object Lifecycle {
+            const val extensions =
+                "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidX.lifecycleVersion}"
+            const val compiler =
+                "androidx.lifecycle:lifecycle-compiler:${Versions.AndroidX.lifecycleVersion}"
+        }
 
         object Test {
             const val runner = "androidx.test:runner:${Versions.AndroidX.Test.ext}"

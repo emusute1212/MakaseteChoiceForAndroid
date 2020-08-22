@@ -17,9 +17,11 @@ object Versions {
     object AndroidX {
         const val appCompat = "1.1.0"
         const val constraintLayout = "1.1.3"
+        const val lifecycleVersion = "2.2.0"
 
         object Ktx {
             const val core = "1.0.0"
+            const val liveData = "2.2.0"
         }
 
         object Test {

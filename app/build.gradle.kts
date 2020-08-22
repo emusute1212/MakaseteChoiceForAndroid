@@ -37,10 +37,6 @@ android {
         isEnabled = true
     }
 
-//    viewBinding {
-//        isEnabled = true
-//    }
-
 }
 
 dependencies {
@@ -50,8 +46,13 @@ dependencies {
     // AppCompat
     implementation(Dependencies.AndroidX.appCompat)
 
+    // Lifecycle
+    implementation(Dependencies.AndroidX.Lifecycle.extensions)
+    kapt(Dependencies.AndroidX.Lifecycle.compiler)
+
     // Ktx
-    implementation(Dependencies.AndroidX.ktx)
+    implementation(Dependencies.AndroidX.Ktx.core)
+    implementation(Dependencies.AndroidX.Ktx.liveData)
 
     // Ui
     implementation(Dependencies.AndroidX.constraintLayout)
