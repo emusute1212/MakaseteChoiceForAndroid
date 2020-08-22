@@ -7,5 +7,8 @@
     <string name="cancel">キャンセル</string>
     <string name="choice_number_title">組み分け数</string>
     <string name="member_number_title">メンバー数：</string>
-    <string name="choice">チョイス！</string>
+    <string name="do_choice">チョイス！</string>
+    <string name="member">メンバー</string>
+    <string name="choice">チョイス</string>
+    <string name="setting">設定</string>
 </resources>
