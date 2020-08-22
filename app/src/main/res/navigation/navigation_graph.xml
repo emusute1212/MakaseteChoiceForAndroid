@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/member">
 
     <fragment
-        android:id="@+id/firstFragment"
+        android:id="@+id/member"
         android:name="io.github.emusute1212.makasetechoice.members.MembersFragment"
-        android:label="fragment_first"
+        android:label="fragment_member"
         tools:layout="@layout/fragment_member" />
+
+    <fragment
+        android:id="@+id/choice"
+        android:name="io.github.emusute1212.makasetechoice.groups.GroupFragment"
+        android:label="fragment_group"
+        tools:layout="@layout/fragment_group" />
 
 </navigation>
