@@ -11,6 +11,12 @@ import javax.inject.Inject
 class GroupsViewModel @Inject constructor(
     private val useCase: GroupUseCase
 ) : ViewModel() {
+    private val _messenger = MutableLiveData<GroupMessenger>(
+        GroupMessenger.Init
+    )
+    val messenger: LiveData<GroupMessenger>
+        get() = _messenger
+
     private val _groups = MutableLiveData<Map<String, List<Member>>>()
     val groups: LiveData<Map<String, List<Member>>>
         get() = _groups

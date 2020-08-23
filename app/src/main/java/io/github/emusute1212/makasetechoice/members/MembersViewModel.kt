@@ -11,6 +11,12 @@ import javax.inject.Inject
 class MembersViewModel @Inject constructor(
     private val repository: MemberDataRepository
 ) : ViewModel() {
+    private val _messenger = MutableLiveData<MemberMessenger>(
+        MemberMessenger.Init
+    )
+    val messenger: LiveData<MemberMessenger>
+        get() = _messenger
+
     private val _members = MutableLiveData<List<Member>>()
     val members: LiveData<List<Member>>
         get() = _members
