@@ -11,12 +11,6 @@ import javax.inject.Inject
 class MembersViewModel @Inject constructor(
     private val repository: MemberDataRepository
 ) : ViewModel() {
-    private val _messenger = MutableLiveData<MemberMessenger>(
-        MemberMessenger.Init
-    )
-    val messenger: LiveData<MemberMessenger>
-        get() = _messenger
-
     private val _members = MutableLiveData<List<Member>>()
     val members: LiveData<List<Member>>
         get() = _members
@@ -34,8 +28,8 @@ class MembersViewModel @Inject constructor(
     fun init() {
         viewModelScope.launch(Dispatchers.IO) {
             delay(1000L)
-//            _members.postValue(repository.loadMembers())
-            _members.postValue(emptyList())
+            _members.postValue(repository.loadMembers())
+//            _members.postValue(emptyList())
         }
     }
 }

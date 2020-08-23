@@ -6,13 +6,13 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
 import io.github.emusute1212.makasetechoice.databinding.DialogChoiceGroupBinding
-import io.github.emusute1212.makasetechoice.groups.GroupMessenger
 import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
+import kotlinx.android.synthetic.main.dialog_add_member.view.cancel_button
+import kotlinx.android.synthetic.main.dialog_choice_group.view.*
 import javax.inject.Inject
 
 class ChoiceDialogFragment : DaggerDialogFragment() {
@@ -32,12 +32,13 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        initMessenger()
         return DialogChoiceGroupBinding.inflate(inflater, container, false).also {
             it.membersViewModel = membersViewModel
             it.groupsViewModel = groupsViewModel
             it.lifecycleOwner = viewLifecycleOwner
-        }.root
+        }.root.also {
+            it.init()
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -55,18 +56,13 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
         }
     }
 
-    private fun initMessenger() {
-        groupsViewModel.messenger.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is GroupMessenger.OnDoChoiceGroup -> {
-                    dismiss()
-                }
-                is GroupMessenger.OnCancelChoice -> {
-                    dismiss()
-                }
-                else -> Unit
-            }.let {}
-        })
+    private fun View.init() {
+        choice_button.setOnClickListener {
+            dismiss()
+        }
+        cancel_button.setOnClickListener {
+            dismiss()
+        }
     }
 
     companion object {

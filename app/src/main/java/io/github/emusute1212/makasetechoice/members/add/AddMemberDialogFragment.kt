@@ -4,32 +4,40 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Gravity
-import android.view.ViewGroup
-import android.view.Window
+import android.view.*
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
-import io.github.emusute1212.makasetechoice.R
-import io.github.emusute1212.makasetechoice.members.MemberMessenger
-import io.github.emusute1212.makasetechoice.members.MembersViewModel
+import io.github.emusute1212.makasetechoice.databinding.DialogAddMemberBinding
+import kotlinx.android.synthetic.main.dialog_add_member.view.*
 import javax.inject.Inject
 
 class AddMemberDialogFragment : DaggerDialogFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: MembersViewModel by activityViewModels {
+    private val viewModel: AddMemberViewModel by activityViewModels {
         viewModelFactory
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return DialogAddMemberBinding.inflate(inflater, container, false).also {
+            it.viewModel = viewModel
+            it.lifecycleOwner = viewLifecycleOwner
+        }.root.also {
+            it.init()
+        }
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = dialog ?: Dialog(requireContext())
         return dialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
-            setContentView(R.layout.dialog_add_member)
+//            setContentView(R.layout.dialog_add_member)
             window?.setGravity(Gravity.BOTTOM)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             window?.setLayout(
@@ -40,18 +48,14 @@ class AddMemberDialogFragment : DaggerDialogFragment() {
         }
     }
 
-    private fun initMessenger() {
-        viewModel.messenger.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is MemberMessenger.OnDoAddMember -> {
-                    dismiss()
-                }
-                is MemberMessenger.OnCancelAdd -> {
-                    dismiss()
-                }
-                else -> Unit
-            }.let {}
-        })
+    private fun View.init() {
+        adding_button.setOnClickListener {
+            viewModel.onAddButtonClick()
+            dismiss()
+        }
+        cancel_button.setOnClickListener {
+            dismiss()
+        }
     }
 
     companion object {

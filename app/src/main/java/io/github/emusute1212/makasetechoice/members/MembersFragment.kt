@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerFragment
 import io.github.emusute1212.makasetechoice.databinding.FragmentMemberBinding
 import io.github.emusute1212.makasetechoice.members.add.AddMemberDialogFragment
+import kotlinx.android.synthetic.main.fragment_member.view.*
 import javax.inject.Inject
 
 class MembersFragment : DaggerFragment() {
@@ -25,25 +25,20 @@ class MembersFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        initMessenger()
         return FragmentMemberBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner
-        }.root
+        }.root.also {
+            it.init()
+        }
     }
 
-    private fun initMessenger() {
-        viewModel.messenger.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is MemberMessenger.OnClickAddButton -> {
-                    AddMemberDialogFragment().show(
-                        parentFragmentManager,
-                        AddMemberDialogFragment.FRAGMENT_TAG
-                    )
-                }
-                else -> Unit
-            }.let {}
-        })
+    private fun View.init() {
+        add_button_fab.setOnClickListener {
+            AddMemberDialogFragment().show(
+                parentFragmentManager,
+                AddMemberDialogFragment.FRAGMENT_TAG
+            )
+        }
     }
-
 }
