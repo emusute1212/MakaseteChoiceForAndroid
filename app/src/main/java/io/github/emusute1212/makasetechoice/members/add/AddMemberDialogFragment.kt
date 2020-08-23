@@ -7,10 +7,23 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.Window
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import dagger.android.support.DaggerDialogFragment
 import io.github.emusute1212.makasetechoice.R
+import io.github.emusute1212.makasetechoice.members.MemberMessenger
+import io.github.emusute1212.makasetechoice.members.MembersViewModel
+import javax.inject.Inject
 
-class AddMemberDialogFragment : DialogFragment() {
+class AddMemberDialogFragment : DaggerDialogFragment() {
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: MembersViewModel by activityViewModels {
+        viewModelFactory
+    }
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = dialog ?: Dialog(requireContext())
@@ -25,5 +38,23 @@ class AddMemberDialogFragment : DialogFragment() {
             )
             setCancelable(true)
         }
+    }
+
+    private fun initMessenger() {
+        viewModel.messenger.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is MemberMessenger.OnDoAddMember -> {
+                    dismiss()
+                }
+                is MemberMessenger.OnCancelAdd -> {
+                    dismiss()
+                }
+                else -> Unit
+            }.let {}
+        })
+    }
+
+    companion object {
+        val FRAGMENT_TAG = AddMemberDialogFragment::class.java.simpleName
     }
 }

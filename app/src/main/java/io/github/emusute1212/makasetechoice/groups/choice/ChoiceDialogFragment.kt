@@ -6,9 +6,11 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
 import io.github.emusute1212.makasetechoice.databinding.DialogChoiceGroupBinding
+import io.github.emusute1212.makasetechoice.groups.GroupMessenger
 import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
 import javax.inject.Inject
@@ -30,6 +32,7 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        initMessenger()
         return DialogChoiceGroupBinding.inflate(inflater, container, false).also {
             it.membersViewModel = membersViewModel
             it.groupsViewModel = groupsViewModel
@@ -50,5 +53,23 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
             )
             setCancelable(true)
         }
+    }
+
+    private fun initMessenger() {
+        groupsViewModel.messenger.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is GroupMessenger.OnDoChoiceGroup -> {
+                    dismiss()
+                }
+                is GroupMessenger.OnCancelChoice -> {
+                    dismiss()
+                }
+                else -> Unit
+            }.let {}
+        })
+    }
+
+    companion object {
+        val FRAGMENT_TAG = ChoiceDialogFragment::class.java.simpleName
     }
 }
