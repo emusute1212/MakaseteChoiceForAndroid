@@ -8,6 +8,7 @@ import android.view.*
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
+import io.github.emusute1212.makasetechoice.R
 import io.github.emusute1212.makasetechoice.databinding.DialogChoiceGroupBinding
 import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
@@ -45,11 +46,11 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
         val dialog = dialog ?: Dialog(requireContext())
         return dialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
-//            setContentView(R.layout.dialog_add_member)
+            setContentView(R.layout.dialog_choice_group)
             window?.setGravity(Gravity.CENTER)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             window?.setLayout(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                context.resources.getDimension(R.dimen.choice_dialog_width).toInt(),
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             setCancelable(true)

@@ -8,6 +8,7 @@ import android.view.*
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
+import io.github.emusute1212.makasetechoice.R
 import io.github.emusute1212.makasetechoice.databinding.DialogAddMemberBinding
 import kotlinx.android.synthetic.main.dialog_add_member.view.*
 import javax.inject.Inject
@@ -37,7 +38,7 @@ class AddMemberDialogFragment : DaggerDialogFragment() {
         val dialog = dialog ?: Dialog(requireContext())
         return dialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
-//            setContentView(R.layout.dialog_add_member)
+            setContentView(R.layout.dialog_add_member)
             window?.setGravity(Gravity.BOTTOM)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             window?.setLayout(

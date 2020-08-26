@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sansjp_bold"
+            android:text="@{Integer.toString(membersViewModel.members.size())}"
             android:textColor="@color/gray"
             android:textSize="@dimen/low_font_size"
             app:layout_constraintBottom_toBottomOf="@+id/member_title"
