@@ -5,6 +5,7 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import io.github.emusute1212.makasetechoice.MakaseteChoiceApplication
+import io.github.emusute1212.makasetechoice.di.modules.AppModule
 import io.github.emusute1212.makasetechoice.di.modules.activity.MainActivityModule
 import io.github.emusute1212.makasetechoice.di.modules.fragments.AddMemberDialogFragmentModule
 import io.github.emusute1212.makasetechoice.di.modules.fragments.ChoiceDialogFragmentModule
@@ -17,6 +18,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        AppModule::class,
         MainActivityModule::class,
         MembersFragmentModule::class,
         AddMemberDialogFragmentModule::class,

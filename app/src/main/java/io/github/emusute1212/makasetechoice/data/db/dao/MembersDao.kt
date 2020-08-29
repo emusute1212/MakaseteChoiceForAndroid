@@ -13,5 +13,5 @@ interface MembersDao {
     fun loadMembers(): Flow<List<Member>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMember(playCallEntity: Member)
+    fun insertMember(name: Member)
 }

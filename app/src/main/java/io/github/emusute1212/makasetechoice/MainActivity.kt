@@ -41,7 +41,6 @@ class MainActivity : DaggerAppCompatActivity() {
             if (!it) return@Observer
             fragment.dismissAllowingStateLoss()
         })
-        membersViewModel.init()
         groupsViewModel.init()
     }
 }
