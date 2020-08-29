@@ -1,6 +1,7 @@
 package io.github.emusute1212.makasetechoice.ext.binding
 
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -9,6 +10,7 @@ import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.groups.GroupItem
 import io.github.emusute1212.makasetechoice.members.MemberItem
 import io.github.emusute1212.makasetechoice.members.OnDeleteMember
+import io.github.emusute1212.makasetechoice.util.SwipeSimpleCallback
 
 @BindingAdapter(value = ["bindMembers", "onDeleteMember"], requireAll = true)
 fun RecyclerView.bindMembers(list: List<Member>?, onDeleteMember: OnDeleteMember) {
@@ -25,6 +27,16 @@ fun RecyclerView.bindMembers(list: List<Member>?, onDeleteMember: OnDeleteMember
             MemberItem(it, onDeleteMember)
         })
     }
+    // スワイプでも削除できるようにする。
+    object : SwipeSimpleCallback(ItemTouchHelper.LEFT) {
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            (viewHolder as GroupieViewHolder).also { groupieViewHolder ->
+                (groupieViewHolder.item as MemberItem).also { memberItem ->
+                    onDeleteMember.delete(memberItem.member)
+                }
+            }
+        }
+    }.bindRecyclerView(this)
 }
 
 @BindingAdapter("bindGroups")

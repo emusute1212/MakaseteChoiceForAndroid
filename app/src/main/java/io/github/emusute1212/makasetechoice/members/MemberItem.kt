@@ -8,7 +8,7 @@ import io.github.emusute1212.makasetechoice.databinding.MemberItemViewBinding
 
 
 data class MemberItem(
-    private val member: Member,
+    val member: Member,
     private val onDeleteMember: OnDeleteMember? = null
 ) : BindableItem<MemberItemViewBinding>(
     member.id.toLong()

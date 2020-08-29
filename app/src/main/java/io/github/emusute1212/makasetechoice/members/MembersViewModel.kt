@@ -5,6 +5,7 @@ import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.data.repository.MemberDataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MembersViewModel @Inject constructor(
@@ -36,9 +37,11 @@ class MembersViewModel @Inject constructor(
     fun onAddButtonClick() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addMember(checkNotNull(newMemberName.value))
+            withContext(Dispatchers.Main) {
+                // 入力値のリセット
+                newMemberName.value = ""
+            }
         }
-        // 入力値のリセット
-        newMemberName.value = ""
     }
 
     fun onDeleteMember(member: Member) {
