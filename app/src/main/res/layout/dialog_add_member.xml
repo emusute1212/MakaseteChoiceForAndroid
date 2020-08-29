@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="io.github.emusute1212.makasetechoice.members.add.AddMemberViewModel" />
+            type="io.github.emusute1212.makasetechoice.members.MembersViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

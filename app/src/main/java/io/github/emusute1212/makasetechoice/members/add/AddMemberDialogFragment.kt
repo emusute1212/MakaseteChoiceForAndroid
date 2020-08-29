@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
 import io.github.emusute1212.makasetechoice.R
 import io.github.emusute1212.makasetechoice.databinding.DialogAddMemberBinding
+import io.github.emusute1212.makasetechoice.members.MembersViewModel
 import kotlinx.android.synthetic.main.dialog_add_member.view.*
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ class AddMemberDialogFragment : DaggerDialogFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: AddMemberViewModel by activityViewModels {
+    private val viewModel: MembersViewModel by activityViewModels {
         viewModelFactory
     }
 

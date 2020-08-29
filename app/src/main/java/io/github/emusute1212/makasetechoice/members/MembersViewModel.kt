@@ -19,6 +19,7 @@ class MembersViewModel @Inject constructor(
             index
         }
     }
+    val newMemberName = MutableLiveData<String>("")
     val isEmptyMember = MediatorLiveData<Boolean>().also {
         it.addSource(members) { members ->
             it.value = members.isNullOrEmpty()
@@ -31,5 +32,9 @@ class MembersViewModel @Inject constructor(
             _members.postValue(repository.loadMembers())
 //            _members.postValue(emptyList())
         }
+    }
+
+    fun onAddButtonClick() {
+        repository.addMember(checkNotNull(newMemberName.value))
     }
 }
