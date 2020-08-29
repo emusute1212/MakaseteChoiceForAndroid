@@ -50,9 +50,14 @@ dependencies {
     implementation(Dependencies.AndroidX.Lifecycle.extensions)
     kapt(Dependencies.AndroidX.Lifecycle.compiler)
 
+    // Room
+    implementation(Dependencies.AndroidX.Room.runtime)
+    kapt(Dependencies.AndroidX.Room.compiler)
+
     // Ktx
     implementation(Dependencies.AndroidX.Ktx.core)
     implementation(Dependencies.AndroidX.Ktx.liveData)
+    implementation(Dependencies.AndroidX.Ktx.room)
 
     // Ui
     implementation(Dependencies.AndroidX.constraintLayout)

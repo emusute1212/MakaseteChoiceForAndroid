@@ -19,6 +19,12 @@ object Dependencies {
             const val core = "androidx.core:core-ktx:${Versions.AndroidX.Ktx.core}"
             const val liveData =
                 "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.Ktx.liveData}"
+            const val room = "androidx.room:room-ktx:${Versions.AndroidX.roomVersion}"
+        }
+
+        object Room {
+            const val runtime = "androidx.room:room-runtime:${Versions.AndroidX.roomVersion}"
+            const val compiler = "androidx.room:room-compiler:${Versions.AndroidX.roomVersion}"
         }
 
         object Lifecycle {
