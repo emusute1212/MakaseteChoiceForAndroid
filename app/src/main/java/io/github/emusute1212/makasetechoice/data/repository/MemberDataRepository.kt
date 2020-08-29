@@ -22,4 +22,9 @@ class MemberDataRepository @Inject constructor(
     fun addMember(name: String) {
         dao.insertMember(Member(0, name))
     }
+
+    @WorkerThread
+    fun deleteMember(member: Member) {
+        dao.deleteMember(member)
+    }
 }

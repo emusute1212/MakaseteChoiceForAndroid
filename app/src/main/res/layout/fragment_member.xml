@@ -17,6 +17,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             bindMembers="@{viewModel.members}"
+            onDeleteMember="@{viewModel.onDeleteMember}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="@{viewModel.isEmptyMember ? View.GONE : View.VISIBLE}"

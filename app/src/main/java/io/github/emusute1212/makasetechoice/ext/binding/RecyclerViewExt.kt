@@ -8,20 +8,21 @@ import com.xwray.groupie.Section
 import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.groups.GroupItem
 import io.github.emusute1212.makasetechoice.members.MemberItem
+import io.github.emusute1212.makasetechoice.members.OnDeleteMember
 
-@BindingAdapter("bindMembers")
-fun RecyclerView.bindMembers(list: List<Member>?) {
+@BindingAdapter(value = ["bindMembers", "onDeleteMember"], requireAll = true)
+fun RecyclerView.bindMembers(list: List<Member>?, onDeleteMember: OnDeleteMember) {
     if (list == null) return
     if (adapter == null) {
         GroupAdapter<GroupieViewHolder>().also { groupieAdapter ->
             adapter = groupieAdapter
             groupieAdapter.update(list.map {
-                MemberItem(it)
+                MemberItem(it, onDeleteMember)
             })
         }
     } else {
         (adapter as GroupAdapter).update(list.map {
-            MemberItem(it)
+            MemberItem(it, onDeleteMember)
         })
     }
 }
