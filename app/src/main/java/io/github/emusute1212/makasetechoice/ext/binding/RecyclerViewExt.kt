@@ -9,8 +9,8 @@ import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.groups.GroupItem
 import io.github.emusute1212.makasetechoice.members.MemberItem
 
-@BindingAdapter("initMembers")
-fun RecyclerView.initMembers(list: List<Member>?) {
+@BindingAdapter("bindMembers")
+fun RecyclerView.bindMembers(list: List<Member>?) {
     if (list == null) return
     if (adapter == null) {
         GroupAdapter<GroupieViewHolder>().also { groupieAdapter ->
@@ -26,8 +26,8 @@ fun RecyclerView.initMembers(list: List<Member>?) {
     }
 }
 
-@BindingAdapter("initGroups")
-fun RecyclerView.initGroups(groups: Map<String, List<Member>>?) {
+@BindingAdapter("bindGroups")
+fun RecyclerView.bindGroups(groups: Map<String, List<Member>>?) {
     if (groups == null) return
     val sections = groups.flatMap { item ->
         Section().also { section ->
