@@ -9,6 +9,7 @@ import io.github.emusute1212.makasetechoice.ViewModelFactory
 import io.github.emusute1212.makasetechoice.di.ViewModelKey
 import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
+import io.github.emusute1212.makasetechoice.splash.SplashScreenViewModel
 
 @Module
 interface ViewModelModule {
@@ -24,4 +25,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(GroupsViewModel::class)
     fun bindGroupsViewModel(viewModel: GroupsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SplashScreenViewModel::class)
+    fun bindSplashScreenViewModel(viewModel: SplashScreenViewModel): ViewModel
 }

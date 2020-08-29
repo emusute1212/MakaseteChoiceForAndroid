@@ -10,6 +10,7 @@ import dagger.android.support.DaggerAppCompatActivity
 import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
 import io.github.emusute1212.makasetechoice.splash.SplashScreenFragment
+import io.github.emusute1212.makasetechoice.splash.SplashScreenViewModel
 import io.github.emusute1212.makasetechoice.util.combine
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -26,6 +27,10 @@ class MainActivity : DaggerAppCompatActivity() {
         viewModelFactory
     }
 
+    private val splashScreenViewModel: SplashScreenViewModel by viewModels {
+        viewModelFactory
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,12 +40,22 @@ class MainActivity : DaggerAppCompatActivity() {
         val fragment = SplashScreenFragment().also {
             it.show(supportFragmentManager, SplashScreenFragment.FRAGMENT_TAG)
         }
-        combine(false, membersViewModel.members, groupsViewModel.groups) { _, _, _ ->
-            true
+        combine(
+            false,
+            membersViewModel.members,
+            groupsViewModel.groups,
+            splashScreenViewModel.canSplashClose
+        ) { _, _, _, canSplashClose ->
+            canSplashClose
         }.observe(this, Observer {
             if (!it) return@Observer
             fragment.dismissAllowingStateLoss()
         })
+        splashScreenViewModel.shouldSplashClose.observe(this, Observer {
+            if (!it) return@Observer
+            fragment.dismissAllowingStateLoss()
+        })
+        splashScreenViewModel.init()
         groupsViewModel.init()
     }
 }
