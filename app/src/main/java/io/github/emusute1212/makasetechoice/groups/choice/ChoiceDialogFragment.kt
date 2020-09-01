@@ -59,6 +59,9 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
 
     private fun View.init() {
         choice_button.setOnClickListener {
+            membersViewModel.members.value?.also {
+                groupsViewModel.choiceGroup(it)
+            }
             dismiss()
         }
         cancel_button.setOnClickListener {

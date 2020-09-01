@@ -11,7 +11,9 @@ import io.github.emusute1212.makasetechoice.di.modules.fragments.AddMemberDialog
 import io.github.emusute1212.makasetechoice.di.modules.fragments.ChoiceDialogFragmentModule
 import io.github.emusute1212.makasetechoice.di.modules.fragments.GroupsFragmentModule
 import io.github.emusute1212.makasetechoice.di.modules.fragments.MembersFragmentModule
+import io.github.emusute1212.makasetechoice.di.modules.repositorys.GroupDataRepositoryModule
 import io.github.emusute1212.makasetechoice.di.modules.repositorys.MemberDataRepositoryModule
+import io.github.emusute1212.makasetechoice.di.modules.usecases.GroupUseCaseModule
 import io.github.emusute1212.makasetechoice.di.modules.viewmodel.ViewModelModule
 import javax.inject.Singleton
 
@@ -25,6 +27,8 @@ import javax.inject.Singleton
         GroupsFragmentModule::class,
         ChoiceDialogFragmentModule::class,
         MemberDataRepositoryModule::class,
+        GroupDataRepositoryModule::class,
+        GroupUseCaseModule::class,
         ViewModelModule::class,
         AndroidSupportInjectionModule::class
     ]

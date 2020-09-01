@@ -7,6 +7,6 @@ class GroupAndMember {
     @Embedded
     lateinit var group: Group
 
-    @Relation(parentColumn = "id", entityColumn = "member_id")
+    @Relation(parentColumn = "member_id", entityColumn = "id")
     lateinit var members: List<Member>
 }

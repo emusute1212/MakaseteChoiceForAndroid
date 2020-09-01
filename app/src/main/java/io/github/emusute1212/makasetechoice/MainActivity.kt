@@ -56,6 +56,5 @@ class MainActivity : DaggerAppCompatActivity() {
             fragment.dismissAllowingStateLoss()
         })
         splashScreenViewModel.init()
-        groupsViewModel.init()
     }
 }
