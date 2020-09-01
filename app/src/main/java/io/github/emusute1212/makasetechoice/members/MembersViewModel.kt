@@ -16,7 +16,7 @@ class MembersViewModel @Inject constructor(
     }
     val memberChoiceNumberList = members.map {
         it.mapIndexed { index, _ ->
-            index
+            index + 1
         }
     }
     val newMemberName = MutableLiveData<String>("")
