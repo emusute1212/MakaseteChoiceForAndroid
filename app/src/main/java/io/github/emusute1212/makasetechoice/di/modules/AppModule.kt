@@ -15,7 +15,7 @@ object AppModule {
         return Room.databaseBuilder(
             app.applicationContext,
             MakaseteChoiceDatabase::class.java,
-            "makasete_choice_database"
+            "makasete_choice_database.db"
         ).build()
     }
 }

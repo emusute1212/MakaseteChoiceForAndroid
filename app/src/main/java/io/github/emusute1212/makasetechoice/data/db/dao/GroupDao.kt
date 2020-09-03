@@ -16,4 +16,6 @@ interface GroupDao {
 
     @Query("DELETE FROM groups")
     fun deleteAll()
+
+
 }

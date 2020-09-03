@@ -8,5 +8,5 @@ class GroupAndMember {
     lateinit var group: Group
 
     @Relation(parentColumn = "member_id", entityColumn = "id")
-    lateinit var members: List<Member>
+    lateinit var member: Member
 }
