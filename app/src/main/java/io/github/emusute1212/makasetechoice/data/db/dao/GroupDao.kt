@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GroupDao {
     @Transaction
-    @Query("SELECT * FROM groups")
+    @Query("SELECT * FROM groups ORDER BY name")
     fun loadGroups(): Flow<List<GroupAndMember>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
