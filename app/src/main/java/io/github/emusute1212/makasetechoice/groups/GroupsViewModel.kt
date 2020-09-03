@@ -18,11 +18,15 @@ class GroupsViewModel @Inject constructor(
             it.value = groups.isNullOrEmpty()
         }
     }
-    val splitNum = MutableLiveData(1)
+
+    /**
+     * positionで入っているので、使う場合は+1をする
+     */
+    val splitNumPosition = MutableLiveData(0)
 
     fun choiceGroup(member: List<Member>) {
         viewModelScope.launch(Dispatchers.IO) {
-            useCase.choiceGroup(member, checkNotNull(splitNum.value))
+            useCase.choiceGroup(member, checkNotNull(splitNumPosition.value) + 1)
         }
     }
 }
