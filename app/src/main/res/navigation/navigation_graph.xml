@@ -17,4 +17,10 @@
         android:label="fragment_group"
         tools:layout="@layout/fragment_group" />
 
+    <fragment
+        android:id="@+id/setting"
+        android:name="io.github.emusute1212.makasetechoice.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

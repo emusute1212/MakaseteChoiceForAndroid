@@ -7,10 +7,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import io.github.emusute1212.makasetechoice.MakaseteChoiceApplication
 import io.github.emusute1212.makasetechoice.di.modules.AppModule
 import io.github.emusute1212.makasetechoice.di.modules.activity.MainActivityModule
-import io.github.emusute1212.makasetechoice.di.modules.fragments.AddMemberDialogFragmentModule
-import io.github.emusute1212.makasetechoice.di.modules.fragments.ChoiceDialogFragmentModule
-import io.github.emusute1212.makasetechoice.di.modules.fragments.GroupsFragmentModule
-import io.github.emusute1212.makasetechoice.di.modules.fragments.MembersFragmentModule
+import io.github.emusute1212.makasetechoice.di.modules.fragments.*
 import io.github.emusute1212.makasetechoice.di.modules.repositorys.GroupDataRepositoryModule
 import io.github.emusute1212.makasetechoice.di.modules.repositorys.MemberDataRepositoryModule
 import io.github.emusute1212.makasetechoice.di.modules.usecases.GroupUseCaseModule
@@ -26,6 +23,7 @@ import javax.inject.Singleton
         AddMemberDialogFragmentModule::class,
         GroupsFragmentModule::class,
         ChoiceDialogFragmentModule::class,
+        SettingsFragmentModule::class,
         MemberDataRepositoryModule::class,
         GroupDataRepositoryModule::class,
         GroupUseCaseModule::class,
