@@ -52,7 +52,8 @@
             app:layout_constraintEnd_toStartOf="@+id/member_delete_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/ic_user_icon"
-            app:layout_constraintTop_toTopOf="@+id/ic_user_icon" />
+            app:layout_constraintTop_toTopOf="@+id/ic_user_icon"
+            app:layout_goneMarginRight="16dp" />
 
         <ImageButton
             android:id="@+id/member_delete_button"
