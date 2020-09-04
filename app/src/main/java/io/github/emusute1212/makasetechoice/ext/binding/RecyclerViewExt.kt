@@ -10,6 +10,9 @@ import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.groups.GroupItem
 import io.github.emusute1212.makasetechoice.members.MemberItem
 import io.github.emusute1212.makasetechoice.members.OnDeleteMember
+import io.github.emusute1212.makasetechoice.settings.SettingItem
+import io.github.emusute1212.makasetechoice.settings.SettingMenuItems
+import io.github.emusute1212.makasetechoice.settings.SettingsViewModel
 import io.github.emusute1212.makasetechoice.util.SwipeSimpleCallback
 
 @BindingAdapter(value = ["bindMembers", "onDeleteMember"], requireAll = true)
@@ -37,6 +40,23 @@ fun RecyclerView.bindMembers(list: List<Member>?, onDeleteMember: OnDeleteMember
             }
         }
     }.bindRecyclerView(this)
+}
+
+@BindingAdapter(value = ["bindSettings", "viewModel"], requireAll = true)
+fun RecyclerView.bindSettings(items: List<SettingMenuItems>?, viewModel: SettingsViewModel) {
+    if (items == null) return
+    if (adapter == null) {
+        GroupAdapter<GroupieViewHolder>().also { groupieAdapter ->
+            adapter = groupieAdapter
+            groupieAdapter.update(items.map {
+                SettingItem(it, viewModel)
+            })
+        }
+    } else {
+        (adapter as GroupAdapter).update(items.map {
+            SettingItem(it, viewModel)
+        })
+    }
 }
 
 @BindingAdapter("bindGroups")

@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import io.github.emusute1212.makasetechoice.util.messenger.BaseMessengerViewModel
 
 class SettingsViewModel : BaseMessengerViewModel<SettingMessenger>() {
-    private val _items = MutableLiveData<List<SettingItems>>(SettingItems.values().toList())
-    private val items: LiveData<List<SettingItems>>
+    private val _items = MutableLiveData<List<SettingMenuItems>>(SettingMenuItems.values().toList())
+    val items: LiveData<List<SettingMenuItems>>
         get() = _items
 
-    fun onClickItem(item: SettingItems) {
+    fun onClickItem(item: SettingMenuItems) {
         when (item) {
-            SettingItems.OSS_LIB -> sendMessage(SettingMessenger.OssLib)
+            SettingMenuItems.OSS_LIB -> sendMessage(SettingMessenger.OssLib)
         }.let {}
     }
 }
