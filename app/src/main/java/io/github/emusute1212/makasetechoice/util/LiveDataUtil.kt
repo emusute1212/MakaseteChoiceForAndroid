@@ -2,7 +2,9 @@ package io.github.emusute1212.makasetechoice.util
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.distinctUntilChanged
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * https://qiita.com/m-coder/items/000dbfc1c90d734eae72
@@ -95,4 +97,26 @@ inline fun <T : Any, LIVE1 : Any, LIVE2 : Any, LIVE3 : Any, LIVE4 : Any> combine
             }
         }
     }.distinctUntilChanged()
+}
+
+/**
+ * [LiveData]はobserveしたタイミングで持っていた値を取得してしまうため、それを省くためのObserver。
+ *
+ * @param T
+ */
+abstract class MessengerObserver<T> : Observer<T> {
+    private val isReceiveInitializeValue = AtomicBoolean(false)
+
+    override fun onChanged(t: T) {
+        if (isReceiveInitializeValue.compareAndSet(false, true)) return
+        onMessage(t)
+    }
+
+    abstract fun onMessage(t: T)
+}
+
+fun <T> messageObserver(callback: (T) -> Unit) = object : MessengerObserver<T>() {
+    override fun onMessage(t: T) {
+        callback(t)
+    }
 }
