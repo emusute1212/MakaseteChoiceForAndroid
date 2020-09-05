@@ -31,6 +31,11 @@ object Versions {
         }
     }
 
+    object Google {
+        const val ossLicensesPlugin = "0.10.2"
+        const val ossLicenses = "17.0.0"
+    }
+
     object JetPack {
         const val navigation = "2.2.2"
     }

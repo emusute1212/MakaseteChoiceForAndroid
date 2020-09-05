@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath(Dependencies.Gradle.plugin)
         classpath(Dependencies.Gradle.kotlinPlugin)
+        classpath(Dependencies.Google.ossLicensesPlugin)
     }
 }
 

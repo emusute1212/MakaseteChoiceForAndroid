@@ -41,6 +41,13 @@ object Dependencies {
         }
     }
 
+    object Google {
+        const val ossLicensesPlugin =
+            "com.google.android.gms:oss-licenses-plugin:${Versions.Google.ossLicensesPlugin}"
+        const val ossLicenses =
+            "com.google.android.gms:play-services-oss-licenses:${Versions.Google.ossLicenses}"
+    }
+
     object JetPack {
         object Navigation {
             const val core =

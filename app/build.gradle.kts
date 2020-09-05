@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    id("com.google.android.gms.oss-licenses-plugin")
 }
 
 android {
@@ -58,6 +59,9 @@ dependencies {
     implementation(Dependencies.AndroidX.Ktx.core)
     implementation(Dependencies.AndroidX.Ktx.liveData)
     implementation(Dependencies.AndroidX.Ktx.room)
+
+    // Google
+    implementation(Dependencies.Google.ossLicenses)
 
     // Ui
     implementation(Dependencies.AndroidX.constraintLayout)
