@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/member"
         android:name="io.github.emusute1212.makasetechoice.members.MembersFragment"
-        android:label="fragment_member"
+        android:label="@string/member"
         tools:layout="@layout/fragment_member" />
 
     <fragment
         android:id="@+id/choice"
         android:name="io.github.emusute1212.makasetechoice.groups.GroupFragment"
-        android:label="fragment_group"
+        android:label="@string/choice"
         tools:layout="@layout/fragment_group" />
 
     <fragment
         android:id="@+id/setting"
         android:name="io.github.emusute1212.makasetechoice.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="@string/setting"
         tools:layout="@layout/fragment_settings" />
 
 </navigation>

@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.android.support.DaggerAppCompatActivity
 import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
@@ -37,6 +39,9 @@ class MainActivity : DaggerAppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navigation.setupWithNavController(navHostFragment.navController)
+        AppBarConfiguration(setOf(R.id.member, R.id.choice, R.id.setting)).also {
+            setupActionBarWithNavController(this, navHostFragment.navController, it)
+        }
         val fragment = SplashScreenFragment().also {
             it.show(supportFragmentManager, SplashScreenFragment.FRAGMENT_TAG)
         }
