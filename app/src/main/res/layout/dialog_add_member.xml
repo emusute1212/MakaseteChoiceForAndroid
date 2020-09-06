@@ -28,12 +28,17 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="@string/input_member_name_hint"
             android:text="@={viewModel.newMemberName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="Autofill,TextFields" />
+            tools:ignore="Autofill,TextFields">
+
+            <requestFocus />
+        </EditText>
 
         <Button
             android:id="@+id/adding_button"
