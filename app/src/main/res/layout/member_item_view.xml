@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/noto_sansjp_bold"
+            android:fontFamily="@font/noto_sansjp_medium"
             android:text="@{member.name}"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/normal_font_size"

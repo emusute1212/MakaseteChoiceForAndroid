@@ -5,4 +5,5 @@
     <dimen name="low_font_size">14sp</dimen>
     <dimen name="navigation_font_size">12sp</dimen>
     <dimen name="choice_dialog_width">304dp</dimen>
+    <dimen name="toolbar_height">64dp</dimen>
 </resources>

@@ -36,12 +36,15 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navigation.setupWithNavController(navHostFragment.navController)
         AppBarConfiguration(setOf(R.id.member, R.id.choice, R.id.setting)).also {
             setupActionBarWithNavController(this, navHostFragment.navController, it)
         }
+
         val fragment = SplashScreenFragment().also {
             it.show(supportFragmentManager, SplashScreenFragment.FRAGMENT_TAG)
         }
