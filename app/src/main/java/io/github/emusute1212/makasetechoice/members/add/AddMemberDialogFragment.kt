@@ -40,6 +40,7 @@ class AddMemberDialogFragment : DaggerDialogFragment() {
 
     override fun onDestroyView() {
         closeKeyboard()
+        viewModel.resetMemberAddText()
         super.onDestroyView()
     }
 
