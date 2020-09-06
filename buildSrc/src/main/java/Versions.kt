@@ -17,15 +17,32 @@ object Versions {
     object AndroidX {
         const val appCompat = "1.1.0"
         const val constraintLayout = "1.1.3"
+        const val lifecycleVersion = "2.2.0"
+        const val roomVersion = "2.2.5"
 
         object Ktx {
             const val core = "1.0.0"
+            const val liveData = "2.2.0"
         }
 
         object Test {
             const val ext = "1.1.1"
             const val espresso = "3.2.0"
         }
+    }
+
+    object Google {
+        const val ossLicensesPlugin = "0.10.2"
+        const val ossLicenses = "17.0.0"
+    }
+
+    object JetPack {
+        const val navigation = "2.2.2"
+    }
+
+    object ThirdParty {
+        const val dagger = "2.27"
+        const val groupie = "2.8.1"
     }
 
     object Test {

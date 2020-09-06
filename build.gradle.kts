@@ -4,11 +4,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-
+        maven { url = java.net.URI.create("https://dl.bintray.com/lisawray/maven") }
     }
     dependencies {
         classpath(Dependencies.Gradle.plugin)
         classpath(Dependencies.Gradle.kotlinPlugin)
+        classpath(Dependencies.Google.ossLicensesPlugin)
     }
 }
 
@@ -16,6 +17,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url = java.net.URI.create("https://dl.bintray.com/lisawray/maven") }
     }
 }
 

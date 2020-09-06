@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="membersViewModel"
+            type="io.github.emusute1212.makasetechoice.members.MembersViewModel" />
+
+        <variable
+            name="groupsViewModel"
+            type="io.github.emusute1212.makasetechoice.groups.GroupsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/choice_dialog_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/choice_group_dialog_background">
+
+        <TextView
+            android:id="@+id/member_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/noto_sansjp_bold"
+            android:text="@string/member_number_title"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/low_font_size"
+            app:layout_constraintEnd_toStartOf="@+id/member_number"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/member_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sansjp_bold"
+            android:text="@{Integer.toString(membersViewModel.members.size())}"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/low_font_size"
+            app:layout_constraintBottom_toBottomOf="@+id/member_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/member_title"
+            app:layout_constraintTop_toTopOf="@+id/member_title" />
+
+        <TextView
+            android:id="@+id/choice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sansjp_bold"
+            android:text="@string/choice_number_title"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/low_font_size"
+            app:layout_constraintEnd_toStartOf="@+id/choice_number"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/member_title" />
+
+        <!--suppress AndroidUnknownAttribute -->
+        <Spinner
+            android:id="@+id/choice_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:entries="@{membersViewModel.memberChoiceNumberList}"
+            android:selectedItemPosition="@={groupsViewModel.splitNumPosition}"
+            app:layout_constraintBottom_toBottomOf="@+id/choice_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/choice_title"
+            app:layout_constraintTop_toTopOf="@+id/choice_title" />
+
+        <Button
+            android:id="@+id/choice_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/noto_sansjp_bold"
+            android:text="@string/do_choice"
+            android:textSize="@dimen/low_font_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancel_button"
+            app:layout_constraintTop_toBottomOf="@+id/choice_title"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/colorWhite"
+            android:fontFamily="@font/noto_sansjp_bold"
+            android:text="@string/cancel"
+            android:textSize="@dimen/low_font_size"
+            app:layout_constraintBottom_toBottomOf="@+id/choice_button"
+            app:layout_constraintEnd_toStartOf="@+id/choice_button"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/choice_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
