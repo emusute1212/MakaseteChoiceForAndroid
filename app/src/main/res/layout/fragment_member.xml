@@ -44,11 +44,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:src="@drawable/ic_plus"
-            android:tint="@color/colorWhite"
-            app:backgroundTint="@color/colorPrimary"
+            android:tint="@color/background"
+            app:backgroundTint="@color/color_high"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:rippleColor="@color/colorBlack" />
+            app:rippleColor="@color/foreground" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
