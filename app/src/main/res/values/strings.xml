@@ -11,5 +11,8 @@
     <string name="member">メンバー</string>
     <string name="choice">チョイス</string>
     <string name="setting">設定</string>
+
+    <!-- settings -->
+    <string name="about_app">このアプリについて</string>
     <string name="settings_oss_lib">オープンソースライブラリ</string>
 </resources>
