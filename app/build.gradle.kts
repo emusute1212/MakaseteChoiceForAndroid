@@ -8,6 +8,8 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("com.google.android.gms.oss-licenses-plugin")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -66,6 +68,7 @@ dependencies {
 
     // Google
     implementation(Dependencies.Google.ossLicenses)
+    implementation(Dependencies.Google.Firebase.crashlytics)
 
     // Ui
     implementation(Dependencies.AndroidX.constraintLayout)

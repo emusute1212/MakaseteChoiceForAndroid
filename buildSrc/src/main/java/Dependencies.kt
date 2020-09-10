@@ -42,10 +42,18 @@ object Dependencies {
     }
 
     object Google {
+        const val googleService = "com.google.gms:google-services:${Versions.Google.googleService}"
         const val ossLicensesPlugin =
             "com.google.android.gms:oss-licenses-plugin:${Versions.Google.ossLicensesPlugin}"
         const val ossLicenses =
             "com.google.android.gms:play-services-oss-licenses:${Versions.Google.ossLicenses}"
+
+        object Firebase {
+            const val crashlyticsGradle =
+                "com.google.firebase:firebase-crashlytics-gradle:${Versions.Google.Firebase.crashlyticsGradle}"
+            const val crashlytics =
+                "com.google.firebase:firebase-crashlytics:${Versions.Google.Firebase.crashlytics}"
+        }
     }
 
     object JetPack {
