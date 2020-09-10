@@ -10,6 +10,11 @@ buildscript {
         classpath(Dependencies.Gradle.plugin)
         classpath(Dependencies.Gradle.kotlinPlugin)
         classpath(Dependencies.Google.ossLicensesPlugin)
+
+        // Firebase
+        classpath(Dependencies.Google.googleService)
+        // Crashlytics
+        classpath(Dependencies.Google.Firebase.crashlyticsGradle)
     }
 }
 

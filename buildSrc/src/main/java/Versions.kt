@@ -32,8 +32,14 @@ object Versions {
     }
 
     object Google {
+        const val googleService = "4.3.3"
         const val ossLicensesPlugin = "0.10.2"
         const val ossLicenses = "17.0.0"
+
+        object Firebase {
+            const val crashlyticsGradle = "2.2.1"
+            const val crashlytics = "17.2.1"
+        }
     }
 
     object JetPack {
