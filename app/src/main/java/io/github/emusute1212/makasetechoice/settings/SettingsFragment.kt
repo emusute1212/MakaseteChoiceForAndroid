@@ -37,9 +37,14 @@ class SettingsFragment : DaggerFragment() {
     private fun initMessenger() {
         viewModel.message.observe(viewLifecycleOwner, messageObserver {
             when (it) {
+                SettingMessenger.AboutApp -> startAboutAppFragment()
                 SettingMessenger.OssLib -> startOssLibActivity()
             }.let {}
         })
+    }
+
+    private fun startAboutAppFragment() {
+        TODO("aboutapp fragment を追加")
     }
 
     private fun startOssLibActivity() {
