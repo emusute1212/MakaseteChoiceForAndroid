@@ -10,6 +10,7 @@
     <color name="color_low">#9F9B9C</color>
     <color name="background">#FCF9FB</color>
     <color name="foreground">#262525</color>
+    <color name="top_line">#262525</color>
     <color name="button_negative_background">@color/background</color>
     <color name="button_positive_background">@color/color_middle</color>
     <color name="dialog_out_line">#7D000000</color>
