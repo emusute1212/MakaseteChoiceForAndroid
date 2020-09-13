@@ -1,10 +1,12 @@
 package io.github.emusute1212.makasetechoice.members.add
 
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerDialogFragment
@@ -13,6 +15,7 @@ import io.github.emusute1212.makasetechoice.databinding.DialogAddMemberBinding
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
 import kotlinx.android.synthetic.main.dialog_add_member.view.*
 import javax.inject.Inject
+
 
 class AddMemberDialogFragment : DaggerDialogFragment() {
     @Inject
@@ -33,6 +36,12 @@ class AddMemberDialogFragment : DaggerDialogFragment() {
         }.root.also {
             it.init()
         }
+    }
+
+    override fun onDestroyView() {
+        closeKeyboard()
+        viewModel.resetMemberAddText()
+        super.onDestroyView()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -57,6 +66,27 @@ class AddMemberDialogFragment : DaggerDialogFragment() {
         }
         cancel_button.setOnClickListener {
             dismiss()
+        }
+        showKeyboard()
+    }
+
+    private fun showKeyboard() {
+        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE).also {
+            it as InputMethodManager
+            it.toggleSoftInput(
+                InputMethodManager.SHOW_FORCED,
+                0
+            )
+        }
+    }
+
+    private fun closeKeyboard() {
+        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE).also {
+            it as InputMethodManager
+            it.toggleSoftInput(
+                InputMethodManager.HIDE_IMPLICIT_ONLY,
+                0
+            )
         }
     }
 

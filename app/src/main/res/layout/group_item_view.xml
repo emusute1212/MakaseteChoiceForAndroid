@@ -23,22 +23,13 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/noto_sansjp_bold"
             android:text="@{groupName}"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/foreground"
             android:textSize="@dimen/high_font_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/under_line"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="@color/colorBlack"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

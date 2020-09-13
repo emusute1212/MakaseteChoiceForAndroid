@@ -31,7 +31,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/noto_sansjp_medium"
             android:text="@{item.stringRes}"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/foreground"
             android:textSize="@dimen/normal_font_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
             android:id="@+id/under_line"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/gray"
+            android:background="@color/item_line"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

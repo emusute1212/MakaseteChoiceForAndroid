@@ -31,7 +31,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/ic_user_circle"
-            android:tint="@color/colorBlack"
+            android:tint="@color/foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/user_name_text"
             app:layout_constraintHorizontal_bias="0.0"
@@ -46,7 +46,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/noto_sansjp_medium"
             android:text="@{member.name}"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/foreground"
             android:textSize="@dimen/normal_font_size"
             app:layout_constraintBottom_toBottomOf="@+id/ic_user_icon"
             app:layout_constraintEnd_toStartOf="@+id/member_delete_button"
@@ -59,24 +59,16 @@
             android:id="@+id/member_delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@null"
             android:onClick="@{() -> onDeleteMember.delete(member)}"
+            android:scaleType="fitStart"
             android:src="@drawable/ic_close"
-            android:tint="@color/gray"
+            android:tint="@color/color_low"
             android:visibility="@{deletable ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/user_name_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/under_line"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/user_name_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

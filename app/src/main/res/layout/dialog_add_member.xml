@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,17 +22,23 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/member_input_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="@string/input_member_name_hint"
             android:text="@={viewModel.newMemberName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Autofill,TextFields">
+
+            <requestFocus />
+        </EditText>
 
         <Button
             android:id="@+id/adding_button"
@@ -42,15 +49,16 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/button_background"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/button_positive_background"
             android:fontFamily="@font/noto_sansjp_bold"
             android:text="@string/add"
+            android:textColor="@color/foreground"
             android:textSize="@dimen/low_font_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cancel_button"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/member_input_text"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
@@ -58,9 +66,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/button_negative_background"
             android:fontFamily="@font/noto_sansjp_bold"
             android:text="@string/cancel"
+            android:textColor="@color/foreground"
             android:textSize="@dimen/low_font_size"
             app:layout_constraintBottom_toBottomOf="@+id/adding_button"
             app:layout_constraintEnd_toStartOf="@+id/adding_button"

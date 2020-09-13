@@ -41,7 +41,7 @@ class MainActivity : DaggerAppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navigation.setupWithNavController(navHostFragment.navController)
-        AppBarConfiguration(setOf(R.id.member, R.id.choice, R.id.setting)).also {
+        AppBarConfiguration(setOf(R.id.member, R.id.choice, R.id.setting, R.id.about_app)).also {
             setupActionBarWithNavController(this, navHostFragment.navController, it)
         }
 

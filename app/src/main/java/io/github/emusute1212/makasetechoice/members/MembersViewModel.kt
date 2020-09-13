@@ -39,9 +39,13 @@ class MembersViewModel @Inject constructor(
             repository.addMember(checkNotNull(newMemberName.value))
             withContext(Dispatchers.Main) {
                 // 入力値のリセット
-                newMemberName.value = ""
+                resetMemberAddText()
             }
         }
+    }
+
+    fun resetMemberAddText() {
+        newMemberName.value = ""
     }
 
     fun onDeleteMember(member: Member) {
