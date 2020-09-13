@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.android.support.DaggerFragment
+import io.github.emusute1212.makasetechoice.R
 import io.github.emusute1212.makasetechoice.databinding.FragmentSettingsBinding
 import io.github.emusute1212.makasetechoice.util.messageObserver
 import javax.inject.Inject
@@ -44,7 +46,7 @@ class SettingsFragment : DaggerFragment() {
     }
 
     private fun startAboutAppFragment() {
-        TODO("aboutapp fragment を追加")
+        findNavController(this).navigate(R.id.action_setting_to_about_app)
     }
 
     private fun startOssLibActivity() {
