@@ -1,6 +1,5 @@
 package io.github.emusute1212.makasetechoice.ext.binding
 
-import android.util.Log
 import io.github.emusute1212.makasetechoice.data.entity.Group
 import io.github.emusute1212.makasetechoice.data.entity.GroupAndMember
 import io.github.emusute1212.makasetechoice.data.entity.Member
@@ -22,7 +21,5 @@ fun Map<String, List<Member>>.toGroups(): List<Group> {
         group.value.map {
             Group(index++, group.key, it.id)
         }
-    }.also {
-        Log.d("aaaaaaa", it.toString())
     }
 }

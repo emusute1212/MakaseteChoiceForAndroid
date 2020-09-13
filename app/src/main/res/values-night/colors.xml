@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_middle">#C89105</color>
+    <color name="color_low">#9F9B9C</color>
+    <color name="background">#393437</color>
+    <color name="foreground">#E6E1E1</color>
+    <color name="button_negative_background">#655D62</color>
+    <color name="button_positive_background">@color/color_middle</color>
+    <color name="item_line">#656161</color>
+    <color name="delete_background">#F14374</color>
+    <color name="dialog_out_line">#7D000000</color>
+    <color name="splash_background">#2C242C</color>
+</resources>

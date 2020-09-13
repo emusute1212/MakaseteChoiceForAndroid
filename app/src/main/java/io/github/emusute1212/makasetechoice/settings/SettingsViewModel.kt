@@ -12,6 +12,7 @@ class SettingsViewModel @Inject constructor() : BaseMessengerViewModel<SettingMe
 
     fun onClickItem(item: SettingMenuItems) {
         when (item) {
+            SettingMenuItems.ABOUT_APP -> sendMessage(SettingMessenger.AboutApp)
             SettingMenuItems.OSS_LIB -> sendMessage(SettingMessenger.OssLib)
         }.let {}
     }

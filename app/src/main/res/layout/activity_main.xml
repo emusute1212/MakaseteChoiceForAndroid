@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="@dimen/toolbar_height"
-        android:background="@color/colorWhite"
+        android:background="@color/background"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/Toolbar"
-        app:titleTextColor="@color/colorBlack" />
+        app:titleTextColor="@color/foreground" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -35,7 +35,7 @@
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@color/background"
         app:itemIconTint="@drawable/navigation_selector"
         app:itemTextColor="@drawable/navigation_selector"
         app:layout_constraintBottom_toBottomOf="parent"
