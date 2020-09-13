@@ -15,4 +15,7 @@
     <!-- settings -->
     <string name="about_app">このアプリについて</string>
     <string name="settings_oss_lib">オープンソースライブラリ</string>
+    <string name="version_label">バージョン：</string>
+    <string name="author_label">作成者：</string>
+    <string name="author">Yosuke Miyanishi</string>
 </resources>
