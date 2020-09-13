@@ -30,16 +30,6 @@
         app:layout_constraintTop_toTopOf="@+id/logo" />
 
 
-    <View
-        android:id="@+id/under_line"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/top_line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
     <TextView
         android:id="@+id/app_version"
         android:layout_width="wrap_content"
@@ -57,16 +47,15 @@
         android:id="@+id/app_version_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/noto_sansjp_medium"
         android:text="@string/version_label"
         android:textSize="@dimen/normal_font_size"
         app:layout_constraintEnd_toStartOf="@+id/app_version"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/under_line" />
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
         android:id="@+id/app_author"
@@ -76,7 +65,7 @@
         android:text="@string/author"
         android:textSize="@dimen/normal_font_size"
         app:layout_constraintBottom_toBottomOf="@+id/app_author_label"
-        app:layout_constraintStart_toEndOf="@+id/app_version_label"
+        app:layout_constraintStart_toEndOf="@+id/app_author_label"
         app:layout_constraintTop_toTopOf="@+id/app_author_label"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
@@ -85,15 +74,13 @@
         android:id="@+id/app_author_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/noto_sansjp_medium"
         android:text="@string/author_label"
         android:textSize="@dimen/normal_font_size"
-        app:layout_constraintEnd_toStartOf="@+id/app_version"
+        app:layout_constraintEnd_toStartOf="@+id/app_author"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/app_version_label"
         app:layout_constraintTop_toBottomOf="@+id/app_version_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
