@@ -1,7 +1,6 @@
 package io.github.emusute1212.makasetechoice.ext.binding
 
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -9,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
+import io.github.emusute1212.makasetechoice.R
 import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.groups.GroupItem
 import io.github.emusute1212.makasetechoice.members.MemberItem
@@ -55,7 +55,12 @@ fun RecyclerView.bindMembers(list: List<Member>?, onDeleteMember: OnDeleteMember
         ) {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             viewHolder.itemView.also {
-                ColorDrawable(Color.RED).also { background ->
+                ColorDrawable(
+                    resources.getColor(
+                        R.color.delete_background,
+                        null
+                    )
+                ).also { background ->
                     background.setBounds(
                         it.right + dX.toInt(),
                         it.top,
