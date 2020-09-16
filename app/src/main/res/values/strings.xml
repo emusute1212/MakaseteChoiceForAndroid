@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">MakaseteChoice</string>
+    <string name="app_name">まかせて⭐︎チョイス！</string>
+    <string name="nothing_member_text">メンバーがいません。\n右下のボタンから\nメンバーを追加しましょう。</string>
+    <string name="nothing_group_text">グループがありません。\n右下のボタンから\nグループをチョイスしましょう。</string>
+    <string name="input_member_name_hint">メンバーの名前を入力</string>
+    <string name="add">追加</string>
+    <string name="cancel">キャンセル</string>
+    <string name="choice_number_title">組み分け数</string>
+    <string name="member_number_title">メンバー数：</string>
+    <string name="do_choice">チョイス！</string>
+    <string name="member">メンバー</string>
+    <string name="choice">チョイス</string>
+    <string name="setting">設定</string>
+
+    <!-- settings -->
+    <string name="about_app">このアプリについて</string>
+    <string name="settings_oss_lib">オープンソースライブラリ</string>
+    <string name="version_label">バージョン：</string>
+    <string name="author_label">作成者：</string>
+    <string name="author">Yosuke Miyanishi</string>
 </resources>

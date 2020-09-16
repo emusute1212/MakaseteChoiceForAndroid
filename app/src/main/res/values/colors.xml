@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#6E6E6E</color>
+    <color name="colorPrimaryDark">#6E6E6E</color>
+    <color name="colorAccent">@color/color_high</color>
+
+
+    <color name="color_high">#FD9090</color>
+    <color name="color_middle">#FFF280</color>
+    <color name="color_low">#9F9B9C</color>
+    <color name="background">#FCF9FB</color>
+    <color name="foreground">#262525</color>
+    <color name="item_line">#CDC9C9</color>
+    <color name="delete_background">#F14374</color>
+    <color name="button_negative_background">@color/background</color>
+    <color name="button_positive_background">@color/color_middle</color>
+    <color name="dialog_out_line">#7D000000</color>
+    <color name="splash_background">#FFC9FF</color>
 </resources>

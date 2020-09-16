@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/member">
+
+    <fragment
+        android:id="@+id/member"
+        android:name="io.github.emusute1212.makasetechoice.members.MembersFragment"
+        android:label="@string/member"
+        tools:layout="@layout/fragment_member" />
+
+    <fragment
+        android:id="@+id/choice"
+        android:name="io.github.emusute1212.makasetechoice.groups.GroupFragment"
+        android:label="@string/choice"
+        tools:layout="@layout/fragment_group" />
+
+    <fragment
+        android:id="@+id/setting"
+        android:name="io.github.emusute1212.makasetechoice.settings.SettingsFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_setting_to_about_app"
+            app:destination="@id/about_app" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/about_app"
+        android:name="io.github.emusute1212.makasetechoice.settings.aboutapp.AboutAppFragment"
+        android:label="@string/about_app"
+        tools:layout="@layout/fragment_about_app" />
+
+</navigation>
