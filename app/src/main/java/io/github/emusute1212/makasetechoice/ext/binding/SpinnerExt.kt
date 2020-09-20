@@ -12,7 +12,7 @@ fun Spinner.setPosition(position: Int, attrChange: InverseBindingListener) {
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(p0: AdapterView<*>?) {}
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-            if (position >= adapter.count) return
+            if (p2 >= adapter.count) return
             attrChange.onChange()
         }
     }
