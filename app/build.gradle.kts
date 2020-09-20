@@ -39,6 +39,16 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            // https://qiita.com/hkusu/items/cadb572c979c4d729567
+            storeFile = rootProject.file("release.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
