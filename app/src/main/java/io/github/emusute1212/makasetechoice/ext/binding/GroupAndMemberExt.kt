@@ -16,10 +16,9 @@ fun List<GroupAndMember>.toMap(): Map<String, List<Member>> {
 }
 
 fun Map<String, List<Member>>.toGroups(): List<Group> {
-    var index = 0
     return flatMap { group ->
         group.value.map {
-            Group(index++, group.key, it.id)
+            Group(0, group.key, it.id)
         }
     }
 }
