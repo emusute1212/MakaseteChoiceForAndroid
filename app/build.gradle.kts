@@ -42,7 +42,7 @@ android {
     signingConfigs {
         create("release") {
             // https://qiita.com/hkusu/items/cadb572c979c4d729567
-            storeFile = rootProject.file("release.keystore")
+            storeFile = rootProject.file("upload-keystore.jks")
             storePassword = System.getenv("KEYSTORE_PASSWORD")
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEY_PASSWORD")

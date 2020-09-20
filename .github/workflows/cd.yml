@@ -19,7 +19,7 @@ jobs:
           java-version: 1.8
       - name: Build with Gradle
         run: |
-          echo '${{ secrets.KEYSTORE_BASE64 }}' | base64 -d > release.keystore
+          echo '${{ secrets.KEYSTORE_BASE64 }}' | base64 -d > upload-keystore.jks
           export KEYSTORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
           export KEY_ALIAS='${{ secrets.KEY_ALIAS }}'
           export KEY_PASSWORD='${{ secrets.KEY_PASSWORD }}'
