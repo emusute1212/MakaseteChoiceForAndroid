@@ -56,7 +56,7 @@ object Versions {
     }
 
     object MakaseteChoice {
-        private val version = Version(1, 0, 0, 0)
+        private val version = Version(1, 0, 1, 0)
         val code = version.getVersionCode()
         val name = version.getVersionName()
     }
