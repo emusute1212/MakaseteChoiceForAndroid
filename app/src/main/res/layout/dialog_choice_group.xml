@@ -65,11 +65,11 @@
         <!--suppress AndroidUnknownAttribute -->
         <Spinner
             android:id="@+id/choice_number"
+            selectedItemPositionSafety="@={groupsViewModel.splitNumPosition}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:entries="@{membersViewModel.memberChoiceNumberList}"
-            android:selectedItemPosition="@={groupsViewModel.splitNumPosition}"
             app:layout_constraintBottom_toBottomOf="@+id/choice_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
