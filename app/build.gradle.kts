@@ -33,6 +33,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.create("release")
         }
         getByName("debug") {
             applicationIdSuffix = ".debug"
@@ -40,7 +41,7 @@ android {
     }
 
     signingConfigs {
-        create("release") {
+        getByName("release") {
             // https://qiita.com/hkusu/items/cadb572c979c4d729567
             storeFile = rootProject.file("upload-keystore.jks")
             storePassword = System.getenv("KEYSTORE_PASSWORD")
