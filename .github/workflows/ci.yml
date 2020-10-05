@@ -18,5 +18,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Make google-service.json
+        run: echo '${{ secrets.GOOGLE_SERVICE_BASE64 }}' | base64 -d > app/google-service.json
       - name: Build with Gradle
         run: ./gradlew build
