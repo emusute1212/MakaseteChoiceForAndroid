@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 upload-keystore.jks
+app/google-services.json
