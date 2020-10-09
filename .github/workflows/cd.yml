@@ -1,0 +1,38 @@
+name: Android CI
+
+on:
+  create:
+    tags:
+      - v*
+
+# https://qiita.com/hkusu/items/cadb572c979c4d729567
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Make google-service.json
+        run: echo '${{ secrets.GOOGLE_SERVICE_BASE64 }}' | base64 -d > app/google-services.json
+      - name: Build with Gradle
+        run: |
+          echo '${{ secrets.KEYSTORE_BASE64 }}' | base64 -d > upload-keystore.jks
+          export KEYSTORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
+          export KEY_ALIAS='${{ secrets.KEY_ALIAS }}'
+          export KEY_PASSWORD='${{ secrets.KEY_PASSWORD }}'
+          ./gradlew assembleRelease
+      - name: Get apk path
+        id: apk-path
+        run: |
+          path=$(find **/build/outputs/apk -name '*.apk' -type f | head -1)
+          echo "::set-output name=path::$path"
+      - name: Upload apk file
+        uses: actions/upload-artifact@v1
+        with:
+          name: apk
+          path: ${{ steps.apk-path.outputs.path }}
