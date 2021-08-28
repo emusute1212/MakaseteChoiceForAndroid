@@ -14,13 +14,12 @@ plugins {
 
 android {
     val shouldMakeApk = rootProject.file("upload-keystore.jks").exists()
-    compileSdkVersion(Versions.compileSdk)
-    buildToolsVersion = Versions.buildTools
+    compileSdk = Versions.compileSdk
 
     defaultConfig {
         applicationId = Versions.applicationId
-        minSdkVersion(Versions.minSdk)
-        targetSdkVersion(Versions.targetSdk)
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
         versionCode = Versions.MakaseteChoice.code
         versionName = Versions.MakaseteChoice.name
 
@@ -56,11 +55,11 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        dataBinding = true
     }
 
 }

@@ -6,12 +6,12 @@ object Versions {
     const val minSdk = 23
 
     object Gradle {
-        const val plugin = "3.6.3"
-        const val kotlinPlugin = "1.3.71"
+        const val plugin = "7.0.0"
+        const val kotlinPlugin = "1.5.0"
     }
 
     object Kotlin {
-        const val stdLib = "1.3.71"
+        const val stdLib = "1.5.0"
     }
 
     object AndroidX {
@@ -32,8 +32,8 @@ object Versions {
     }
 
     object Google {
-        const val googleService = "4.3.3"
-        const val ossLicensesPlugin = "0.10.2"
+        const val googleService = "4.3.8"
+        const val ossLicensesPlugin = "0.10.4"
         const val ossLicenses = "17.0.0"
 
         object Firebase {
