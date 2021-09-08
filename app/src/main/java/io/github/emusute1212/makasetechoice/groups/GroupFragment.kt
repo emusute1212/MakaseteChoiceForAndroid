@@ -24,7 +24,7 @@ class GroupFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return FragmentGroupBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner

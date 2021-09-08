@@ -2,8 +2,8 @@ package io.github.emusute1212.makasetechoice
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
@@ -13,8 +13,10 @@ import io.github.emusute1212.makasetechoice.groups.GroupsViewModel
 import io.github.emusute1212.makasetechoice.members.MembersViewModel
 import io.github.emusute1212.makasetechoice.splash.SplashScreenFragment
 import io.github.emusute1212.makasetechoice.splash.SplashScreenViewModel
-import io.github.emusute1212.makasetechoice.util.combine
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
@@ -49,20 +51,19 @@ class MainActivity : DaggerAppCompatActivity() {
             it.show(supportFragmentManager, SplashScreenFragment.FRAGMENT_TAG)
         }
         combine(
-            false,
             membersViewModel.members,
             groupsViewModel.groups,
             splashScreenViewModel.canSplashClose
-        ) { _, _, _, canSplashClose ->
+        ) { _, _, canSplashClose ->
             canSplashClose
-        }.observe(this, Observer {
-            if (!it) return@Observer
+        }.onEach {
+            if (!it) return@onEach
             fragment.dismissAllowingStateLoss()
-        })
-        splashScreenViewModel.shouldSplashClose.observe(this, Observer {
-            if (!it) return@Observer
+        }.launchIn(lifecycleScope)
+        splashScreenViewModel.shouldSplashClose.onEach {
+            if (!it) return@onEach
             fragment.dismissAllowingStateLoss()
-        })
+        }.launchIn(lifecycleScope)
         splashScreenViewModel.init()
     }
 }

@@ -1,22 +1,22 @@
 package io.github.emusute1212.makasetechoice.splash
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class SplashScreenViewModel @Inject constructor() : ViewModel() {
-    private val _canSplashClose = MutableLiveData<Boolean>(false)
-    val canSplashClose: LiveData<Boolean>
+    private val _canSplashClose = MutableStateFlow(false)
+    val canSplashClose: StateFlow<Boolean>
         get() = _canSplashClose
-    private val _shouldSplashClose = MutableLiveData<Boolean>(false)
-    val shouldSplashClose: LiveData<Boolean>
+    private val _shouldSplashClose = MutableStateFlow(false)
+    val shouldSplashClose: StateFlow<Boolean>
         get() = _shouldSplashClose
 
     fun init() {

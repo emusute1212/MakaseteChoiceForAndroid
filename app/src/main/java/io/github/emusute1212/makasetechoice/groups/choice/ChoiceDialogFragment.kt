@@ -32,7 +32,7 @@ class ChoiceDialogFragment : DaggerDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return DialogChoiceGroupBinding.inflate(inflater, container, false).also {
             it.membersViewModel = membersViewModel
             it.groupsViewModel = groupsViewModel

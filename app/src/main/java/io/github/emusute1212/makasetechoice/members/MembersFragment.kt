@@ -24,7 +24,7 @@ class MembersFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return FragmentMemberBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner

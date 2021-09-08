@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.android.support.DaggerFragment
 import io.github.emusute1212.makasetechoice.R
 import io.github.emusute1212.makasetechoice.databinding.FragmentSettingsBinding
-import io.github.emusute1212.makasetechoice.util.messageObserver
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class SettingsFragment : DaggerFragment() {
@@ -28,7 +30,7 @@ class SettingsFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         initMessenger()
         return FragmentSettingsBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
@@ -37,12 +39,16 @@ class SettingsFragment : DaggerFragment() {
     }
 
     private fun initMessenger() {
-        viewModel.message.observe(viewLifecycleOwner, messageObserver {
-            when (it) {
-                SettingMessenger.AboutApp -> startAboutAppFragment()
-                SettingMessenger.OssLib -> startOssLibActivity()
-            }.let {}
-        })
+        viewModel.message
+            .onEach { onSettingMessage(it) }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun onSettingMessage(
+        message: SettingMessenger
+    ): Any = when (message) {
+        SettingMessenger.AboutApp -> startAboutAppFragment()
+        SettingMessenger.OssLib -> startOssLibActivity()
     }
 
     private fun startAboutAppFragment() {
