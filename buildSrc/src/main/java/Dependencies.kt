@@ -76,10 +76,10 @@ object Dependencies {
         }
 
         object Groupie {
-            const val core = "com.xwray:groupie:${Versions.ThirdParty.groupie}"
+            const val core = "com.github.lisawray.groupie:groupie:${Versions.ThirdParty.groupie}"
             const val kotlinAndroidExtension =
-                "com.xwray:groupie-kotlin-android-extensions:${Versions.ThirdParty.groupie}"
-            const val viewBinding = "com.xwray:groupie-viewbinding:${Versions.ThirdParty.groupie}"
+                "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.ThirdParty.groupie}"
+            const val viewBinding = "com.github.lisawray.groupie:groupie-viewbinding:${Versions.ThirdParty.groupie}"
         }
     }
 

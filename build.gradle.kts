@@ -3,8 +3,8 @@
 buildscript {
     repositories {
         google()
-        jcenter()
-        maven { url = java.net.URI.create("https://dl.bintray.com/lisawray/maven") }
+        mavenCentral()
+        maven { url = java.net.URI.create("https://jitpack.io") }
     }
     dependencies {
         classpath(Dependencies.Gradle.plugin)
@@ -21,8 +21,8 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
-        maven { url = java.net.URI.create("https://dl.bintray.com/lisawray/maven") }
+        mavenCentral()
+        maven { url = java.net.URI.create("https://jitpack.io") }
     }
 }
 
