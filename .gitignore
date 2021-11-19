@@ -9,3 +9,4 @@
 .cxx
 upload-keystore.jks
 app/google-services.json
+.tool-version
