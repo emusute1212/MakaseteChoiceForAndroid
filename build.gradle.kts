@@ -1,31 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven { url = java.net.URI.create("https://dl.bintray.com/lisawray/maven") }
-    }
-    dependencies {
-        classpath(Dependencies.Gradle.plugin)
-        classpath(Dependencies.Gradle.kotlinPlugin)
-        classpath(Dependencies.Google.ossLicensesPlugin)
-
-        // Firebase
-        classpath(Dependencies.Google.googleService)
-        // Crashlytics
-        classpath(Dependencies.Google.Firebase.crashlyticsGradle)
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url = java.net.URI.create("https://dl.bintray.com/lisawray/maven") }
-    }
-}
-
-tasks.register("clean", Delete::class.java) {
-    delete(rootProject.buildDir)
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.firebase.crashlytics) apply false
+    alias(libs.plugins.google.services) apply false
+    alias(libs.plugins.google.oss.licenses.plugin) apply false
+    alias(libs.plugins.hilt) apply false
 }

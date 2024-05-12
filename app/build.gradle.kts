@@ -1,28 +1,28 @@
-import ext.child
-import ext.fileWriter
-import ext.newLine
+import java.io.File
+import java.io.FileWriter
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-kapt")
-    id("com.google.android.gms.oss-licenses-plugin")
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.google.oss.licenses.plugin)
+    alias(libs.plugins.hilt)
 }
 
 android {
     val shouldMakeApk = rootProject.file("upload-keystore.jks").exists()
-    compileSdkVersion(Versions.compileSdk)
-    buildToolsVersion = Versions.buildTools
+    val version = Version(1, 0, 3, 0)
+    namespace = libs.versions.namespace.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = Versions.applicationId
-        minSdkVersion(Versions.minSdk)
-        targetSdkVersion(Versions.targetSdk)
-        versionCode = Versions.MakaseteChoice.code
-        versionName = Versions.MakaseteChoice.name
+        applicationId = libs.versions.applicationId.get()
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = version.code
+        versionName = version.name
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,65 +54,75 @@ android {
             }
         }
     }
+    val javaVersion = JavaVersion.VERSION_17
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    compileOptions {
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
-
-    dataBinding {
-        isEnabled = true
+    kotlinOptions {
+        jvmTarget = javaVersion.toString()
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 
 }
 
 dependencies {
-    // Kotlin
-    implementation(Dependencies.Kotlin.stdLib)
-
-    // AppCompat
-    implementation(Dependencies.AndroidX.appCompat)
+    // Compose
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
 
     // Lifecycle
-    implementation(Dependencies.AndroidX.Lifecycle.extensions)
-    kapt(Dependencies.AndroidX.Lifecycle.compiler)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // Room
-    implementation(Dependencies.AndroidX.Room.runtime)
-    kapt(Dependencies.AndroidX.Room.compiler)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
     // Ktx
-    implementation(Dependencies.AndroidX.Ktx.core)
-    implementation(Dependencies.AndroidX.Ktx.liveData)
-    implementation(Dependencies.AndroidX.Ktx.room)
+    implementation(libs.androidx.core.ktx)
 
     // Google
-    implementation(Dependencies.Google.ossLicenses)
-    implementation(Dependencies.Google.Firebase.crashlytics)
+    implementation(libs.google.oss.licenses)
+
+    // Crashlytics
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics.ktx)
 
     // Ui
-    implementation(Dependencies.AndroidX.constraintLayout)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Material3
+    implementation(libs.androidx.material3)
 
     // Navigation
-    implementation(Dependencies.JetPack.Navigation.core)
-    implementation(Dependencies.JetPack.Navigation.ktx)
+    implementation(libs.navigation.compose)
 
-    // Dagger2
-    implementation(Dependencies.ThirdParty.Dagger.android)
-    implementation(Dependencies.ThirdParty.Dagger.androidSupport)
-    kapt(Dependencies.ThirdParty.Dagger.androidProcessor)
-    kapt(Dependencies.ThirdParty.Dagger.compiler)
-
-    // Groupie
-    implementation(Dependencies.ThirdParty.Groupie.core)
-    implementation(Dependencies.ThirdParty.Groupie.kotlinAndroidExtension)
-    implementation(Dependencies.ThirdParty.Groupie.viewBinding)
+    // DaggerHilt
+    implementation(libs.dagger.hilt)
+    ksp(libs.dagger.hilt.compiler)
 
     // Test
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.AndroidX.Test.runner)
-    androidTestImplementation(Dependencies.AndroidX.Test.espresso)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 }
-
 
 // 自動登録されないOSSライセンスを追加するタスク
 tasks.register("addOssLicenseTask") {
@@ -165,9 +175,11 @@ tasks.register("addOssLicenseTask") {
 }
 
 fun Project.addOssLicense(libName: String, licenseContent: String) {
+    getLayout().getBuildDirectory()
     val outputDir = File(buildDir, "generated/third_party_licenses")
         .child("res")
         .child("raw")
+    println("outputFile: ${outputDir.absolutePath}")
     // ライセンスファイル
     val licensesFile = File(outputDir, "third_party_licenses")
     // ライセンスファイルへの書き込み前に現在の位置を保持
@@ -189,3 +201,25 @@ fun Project.addOssLicense(libName: String, licenseContent: String) {
 // preBuild前にライセンス情報を追加する
 checkNotNull(tasks.findByPath(":app:preBuild"))
     .dependsOn("addOssLicenseTask")
+
+data class Version(
+    val major: Int,
+    val minor: Int,
+    val patch: Int,
+    val rc: Int
+) {
+    val code = ((1 + major) * 10000 + minor * 100 + patch) * 100 + rc
+    val name = "$major.$minor.$patch.$rc"
+}
+
+fun File.child(childPath: String): File {
+    return File(this, childPath)
+}
+
+fun File.fileWriter(overwrite: Boolean): FileWriter {
+    return FileWriter(this, overwrite)
+}
+
+fun FileWriter.newLine() {
+    write(System.getProperty("line.separator"))
+}
