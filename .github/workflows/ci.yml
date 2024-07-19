@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: set up JDK 1.8
+      - name: set up JDK 17
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 17
       - name: Make google-service.json
         run: echo '${{ secrets.GOOGLE_SERVICE_BASE64 }}' | base64 -d > app/google-services.json
       - name: Build with Gradle
