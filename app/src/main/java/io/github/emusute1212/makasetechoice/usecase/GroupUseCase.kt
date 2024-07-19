@@ -3,7 +3,7 @@ package io.github.emusute1212.makasetechoice.usecase
 import androidx.annotation.WorkerThread
 import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.data.repository.GroupDataRepository
-import io.github.emusute1212.makasetechoice.ext.binding.toMap
+import io.github.emusute1212.makasetechoice.ext.toMap
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 

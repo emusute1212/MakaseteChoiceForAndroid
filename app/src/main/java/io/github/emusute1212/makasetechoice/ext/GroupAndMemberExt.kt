@@ -1,4 +1,4 @@
-package io.github.emusute1212.makasetechoice.ext.binding
+package io.github.emusute1212.makasetechoice.ext
 
 import io.github.emusute1212.makasetechoice.data.entity.Group
 import io.github.emusute1212.makasetechoice.data.entity.GroupAndMember
