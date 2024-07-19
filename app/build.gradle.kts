@@ -87,6 +87,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
     // Ktx
@@ -115,6 +116,12 @@ dependencies {
     // DaggerHilt
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+
+    // mavericks
+    implementation(libs.mavericks.core)
+    implementation(libs.mavericks.hilt)
+    implementation(libs.mavericks.compose)
+    implementation(libs.mavericks.navigation)
 
     // Test
     testImplementation(libs.junit)
@@ -175,7 +182,7 @@ tasks.register("addOssLicenseTask") {
 }
 
 fun Project.addOssLicense(libName: String, licenseContent: String) {
-    getLayout().getBuildDirectory()
+//    layout.buildDirectory.dir("")
     val outputDir = File(buildDir, "generated/third_party_licenses")
         .child("res")
         .child("raw")
@@ -199,8 +206,8 @@ fun Project.addOssLicense(libName: String, licenseContent: String) {
 }
 
 // preBuild前にライセンス情報を追加する
-checkNotNull(tasks.findByPath(":app:preBuild"))
-    .dependsOn("addOssLicenseTask")
+//checkNotNull(tasks.findByPath(":app:preBuild"))
+//    .dependsOn("addOssLicenseTask")
 
 data class Version(
     val major: Int,

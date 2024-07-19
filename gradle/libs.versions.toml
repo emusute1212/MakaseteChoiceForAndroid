@@ -1,22 +1,23 @@
 [versions]
-agp = "8.4.0"
+agp = "8.4.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.7.0"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
-composeBom = "2024.05.00"
+composeBom = "2024.06.00"
 room = "2.6.1"
-hilt = "2.44"
-googlePlayService = "4.4.1"
+hilt = "2.49"
+googlePlayService = "4.4.2"
 ossLicensePlugin = "0.10.6"
-ossLicense = "17.0.1"
-firebaseBom = "33.0.0"
-firebaseCrashlytics = "3.0.0"
+ossLicense = "17.1.0"
+firebaseBom = "33.1.1"
+firebaseCrashlytics = "3.0.2"
 navigationCompose = "2.7.7"
-googleDevtoolsKsp = "1.9.0-1.0.12"
+googleDevtoolsKsp = "1.9.10-1.0.13"
+maverics = "3.0.9"
 orgJetbrainsKotlinJvm = "1.9.0"
 compileSdk = "34"
 minSdk = "24"
@@ -40,6 +41,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 google-service = { group = "com.google.gms", name = "google-services", version.ref = "googlePlayService" }
 google-oss-licenses-plugin = { group = "com.google.android.gms", name = "oss-licenses-plugin", version.ref = "ossLicensePlugin" }
@@ -49,6 +51,10 @@ firebase-crashlytics-ktx = { group = "com.google.firebase", name = "firebase-cra
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+mavericks-core = { group = "com.airbnb.android", name = "mavericks", version.ref = "maverics" }
+mavericks-hilt = { group = "com.airbnb.android", name = "mavericks-hilt", version.ref = "maverics" }
+mavericks-compose = { group = "com.airbnb.android", name = "mavericks-compose", version.ref = "maverics" }
+mavericks-navigation = { group = "com.airbnb.android", name = "mavericks-navigation", version.ref = "maverics" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
