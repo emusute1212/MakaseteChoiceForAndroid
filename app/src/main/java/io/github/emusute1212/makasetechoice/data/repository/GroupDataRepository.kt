@@ -5,7 +5,7 @@ import io.github.emusute1212.makasetechoice.data.db.MakaseteChoiceDatabase
 import io.github.emusute1212.makasetechoice.data.db.dao.GroupDao
 import io.github.emusute1212.makasetechoice.data.entity.GroupAndMember
 import io.github.emusute1212.makasetechoice.data.entity.Member
-import io.github.emusute1212.makasetechoice.ext.binding.toGroups
+import io.github.emusute1212.makasetechoice.ext.toGroups
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

@@ -1,11 +1,13 @@
 package io.github.emusute1212.makasetechoice
 
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
-import io.github.emusute1212.makasetechoice.di.DaggerApplicationComponent
+import android.app.Application
+import com.airbnb.mvrx.Mavericks
+import dagger.hilt.android.HiltAndroidApp
 
-class MakaseteChoiceApplication : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerApplicationComponent.builder().app(this).build()
+@HiltAndroidApp
+class MakaseteChoiceApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        Mavericks.initialize(this)
     }
 }
