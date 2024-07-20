@@ -1,5 +1,0 @@
-[versions]
-compileSdk = "34"
-minSdk = "24"
-targetSdk = "34"
-applicationId = "io.github.emusute1212.makasetechoice"
