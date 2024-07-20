@@ -17,6 +17,11 @@ navigationCompose = "2.7.7"
 googleDevtoolsKsp = "1.9.10-1.0.13"
 maverics = "3.0.9"
 aboutlibraries = "11.2.2"
+compileSdk = "34"
+minSdk = "24"
+targetSdk = "34"
+applicationId = "io.github.emusute1212.makasetechoice"
+namespace = "io.github.emusute1212.makasetechoice"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
