@@ -11,19 +11,12 @@ composeBom = "2024.06.00"
 room = "2.6.1"
 hilt = "2.49"
 googlePlayService = "4.4.2"
-ossLicensePlugin = "0.10.6"
-ossLicense = "17.1.0"
-firebaseBom = "33.1.1"
+firebaseBom = "33.1.2"
 firebaseCrashlytics = "3.0.2"
 navigationCompose = "2.7.7"
 googleDevtoolsKsp = "1.9.10-1.0.13"
 maverics = "3.0.9"
-orgJetbrainsKotlinJvm = "1.9.0"
-compileSdk = "34"
-minSdk = "24"
-targetSdk = "34"
-applicationId = "io.github.emusute1212.makasetechoice"
-namespace = "io.github.emusute1212.makasetechoice"
+aboutlibraries = "11.2.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,9 +36,6 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-google-service = { group = "com.google.gms", name = "google-services", version.ref = "googlePlayService" }
-google-oss-licenses-plugin = { group = "com.google.android.gms", name = "oss-licenses-plugin", version.ref = "ossLicensePlugin" }
-google-oss-licenses = { group = "com.google.android.gms", name = "play-services-oss-licenses", version.ref = "ossLicense" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-crashlytics-ktx = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
@@ -55,12 +45,13 @@ mavericks-core = { group = "com.airbnb.android", name = "mavericks", version.ref
 mavericks-hilt = { group = "com.airbnb.android", name = "mavericks-hilt", version.ref = "maverics" }
 mavericks-compose = { group = "com.airbnb.android", name = "mavericks-compose", version.ref = "maverics" }
 mavericks-navigation = { group = "com.airbnb.android", name = "mavericks-navigation", version.ref = "maverics" }
+aboutlibraries-compose = { group = "com.mikepenz", name = "aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "googleDevtoolsKsp"}
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "googleDevtoolsKsp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayService" }
-google-oss-licenses-plugin = { id = "com.google.android.gms.oss-licenses-plugin", version.ref = "ossLicensePlugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics" }
+aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries" }

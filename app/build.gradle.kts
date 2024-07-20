@@ -1,4 +1,3 @@
-import java.io.File
 import java.io.FileWriter
 
 plugins {
@@ -7,13 +6,13 @@ plugins {
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.google.services)
-    alias(libs.plugins.google.oss.licenses.plugin)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {
     val shouldMakeApk = rootProject.file("upload-keystore.jks").exists()
-    val version = Version(1, 0, 3, 0)
+    val version = Version(1, 1, 0, 0)
     namespace = libs.versions.namespace.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
 
@@ -34,6 +33,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
             if (shouldMakeApk) {
                 signingConfig = signingConfigs.create("release")
             }
@@ -93,8 +93,8 @@ dependencies {
     // Ktx
     implementation(libs.androidx.core.ktx)
 
-    // Google
-    implementation(libs.google.oss.licenses)
+    // Licenses
+    implementation(libs.aboutlibraries.compose)
 
     // Crashlytics
     implementation(platform(libs.firebase.bom))
@@ -131,83 +131,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
 }
 
-// 自動登録されないOSSライセンスを追加するタスク
-tasks.register("addOssLicenseTask") {
-    mustRunAfter(tasks.findByName("generateLicenses"))
-    doLast {
-        project.addOssLicense(
-            "Noto Sans JP",
-            "https://fonts.google.com/specimen/Noto+Sans+JP#license"
-        )
-        project.addOssLicense(
-            "Font Awesome",
-            """
-                Font Awesome Free License
-                -------------------------
-
-                Font Awesome Free is free, open source, and GPL friendly. You can use it for
-                commercial projects, open source projects, or really almost whatever you want.
-                Full Font Awesome Free license: https://fontawesome.com/license/free.
-
-                # Icons: CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/)
-                In the Font Awesome Free download, the CC BY 4.0 license applies to all icons
-                packaged as SVG and JS file types.
-
-                # Fonts: SIL OFL 1.1 License (https://scripts.sil.org/OFL)
-                In the Font Awesome Free download, the SIL OFL license applies to all icons
-                packaged as web and desktop font files.
-
-                # Code: MIT License (https://opensource.org/licenses/MIT)
-                In the Font Awesome Free download, the MIT license applies to all non-font and
-                non-icon files.
-
-                # Attribution
-                Attribution is required by MIT, SIL OFL, and CC BY licenses. Downloaded Font
-                Awesome Free files already contain embedded comments with sufficient
-                attribution, so you shouldn't need to do anything additional when using these
-                files normally.
-
-                We've kept attribution comments terse, so we ask that you do not actively work
-                to remove them from files, especially code. They're a great way for folks to
-                learn about Font Awesome.
-
-                # Brand Icons
-                All brand icons are trademarks of their respective owners. The use of these
-                trademarks does not indicate endorsement of the trademark holder by Font
-                Awesome, nor vice versa. **Please do not use brand logos for any purpose except
-                to represent the company, product, or service to which they refer.**
-            """.trimIndent()
-        )
-    }
+// 自動登録されないOSSライセンスを追加する
+aboutLibraries {
+    configPath = "OtherLicenses"
 }
-
-fun Project.addOssLicense(libName: String, licenseContent: String) {
-//    layout.buildDirectory.dir("")
-    val outputDir = File(buildDir, "generated/third_party_licenses")
-        .child("res")
-        .child("raw")
-    println("outputFile: ${outputDir.absolutePath}")
-    // ライセンスファイル
-    val licensesFile = File(outputDir, "third_party_licenses")
-    // ライセンスファイルへの書き込み前に現在の位置を保持
-    val start = licensesFile.length()
-
-    // ライセンスファイルへ書き込み
-    licensesFile.fileWriter(true).use {
-        it.write(licenseContent)
-        it.newLine()
-    }
-
-    // ライセンスメタデータファイルに書き込み
-    File(outputDir, "third_party_license_metadata").fileWriter(true).use {
-        it.write("${start}:${licenseContent.length} $libName")
-        it.newLine()
-    }
-}
-
-// preBuild前にライセンス情報を追加する
-//checkNotNull(tasks.findByPath(":app:preBuild"))
-//    .dependsOn("addOssLicenseTask")
 
 data class Version(
     val major: Int,
@@ -228,5 +155,5 @@ fun File.fileWriter(overwrite: Boolean): FileWriter {
 }
 
 fun FileWriter.newLine() {
-    write(System.getProperty("line.separator"))
+    write(System.lineSeparator())
 }

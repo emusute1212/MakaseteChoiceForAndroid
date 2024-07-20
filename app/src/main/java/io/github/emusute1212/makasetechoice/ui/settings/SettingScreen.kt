@@ -1,8 +1,5 @@
 package io.github.emusute1212.makasetechoice.ui.settings
 
-import android.content.Intent
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideIn
 import androidx.compose.animation.slideOut
@@ -17,21 +14,20 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import io.github.emusute1212.makasetechoice.ui.MakaseteChoiceTheme
 import io.github.emusute1212.makasetechoice.ui.settings.menus.ABOUT_APP_SCREEN_ROUTE
+import io.github.emusute1212.makasetechoice.ui.settings.menus.OSS_LICENSE_SCREEN_ROUTE
 import io.github.emusute1212.makasetechoice.ui.settings.menus.nestedAboutAppScreen
+import io.github.emusute1212.makasetechoice.ui.settings.menus.nestedOssLicenseScreen
 
 const val SETTING_SCREEN_ROUTE = "setting_screen"
 fun NavGraphBuilder.settingScreen() {
@@ -80,6 +76,7 @@ fun SettingScreenHost() {
             nestedNavController = nestedNavController
         )
         nestedAboutAppScreen()
+        nestedOssLicenseScreen()
     }
 }
 
@@ -98,7 +95,6 @@ private fun NavGraphBuilder.nestedSettingScreen(
 private fun SettingScreen(
     nestedNavController: NavController,
 ) {
-    val context = LocalContext.current
     SettingMenus(
         menus = SettingMenu.entries,
         onItemClick = {
@@ -110,9 +106,9 @@ private fun SettingScreen(
                 }
 
                 SettingMenu.LICENSE -> {
-                    Intent(context, OssLicensesMenuActivity::class.java).also { intent ->
-                        startActivity(context, intent, null)
-                    }
+                    nestedNavController.navigate(
+                        route = OSS_LICENSE_SCREEN_ROUTE
+                    )
                 }
             }
         },
