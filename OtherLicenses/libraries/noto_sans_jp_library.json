@@ -1,0 +1,16 @@
+{
+  "uniqueId": "org.google-fonts:noto-sans-jp",
+  "artifactVersion": "",
+  "developers": [
+    {
+      "organisationUrl": "github.com/googlefonts",
+      "name": "Google Fonts team"
+    }
+  ],
+  "description": "Noto sans jp is font made by google.",
+  "name": "Noto Sans JP",
+  "website": "https://fonts.google.com/noto/specimen/Noto+Sans+JP",
+  "licenses": [
+    "SIL-Open-Font-License"
+  ]
+}
