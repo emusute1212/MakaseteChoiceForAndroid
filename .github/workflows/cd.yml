@@ -25,14 +25,14 @@ jobs:
           export KEYSTORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
           export KEY_ALIAS='${{ secrets.KEY_ALIAS }}'
           export KEY_PASSWORD='${{ secrets.KEY_PASSWORD }}'
-          ./gradlew assembleRelease
-      - name: Get apk path
-        id: apk-path
+          ./gradlew bundleRelease
+      - name: Get app-bundle path
+        id: app-bundle-path
         run: |
-          path=$(find **/build/outputs/apk -name '*.apk' -type f | head -1)
+          path=$(find **/build/outputs/bundle -name '*.aab' -type f | head -1)
           echo "::set-output name=path::$path"
-      - name: Upload apk file
+      - name: Upload aab file
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: ${{ steps.apk-path.outputs.path }}
+          path: ${{ steps.app-bundle-path.outputs.path }}
