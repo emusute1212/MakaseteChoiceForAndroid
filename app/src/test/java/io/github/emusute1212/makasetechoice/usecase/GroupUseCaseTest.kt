@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.fail
 import org.junit.Test
 
 class GroupUseCaseTest {
@@ -133,6 +134,7 @@ class GroupUseCaseTest {
 
         try {
             useCase.choiceGroup(TARGET_MEMBERS, 0)
+            fail()
         } catch (e: IllegalArgumentException) {
             Truth.assertThat(IllegalArgumentException()).isInstanceOf(e::class.java)
         }
@@ -155,6 +157,7 @@ class GroupUseCaseTest {
 
         try {
             useCase.choiceGroup(TARGET_MEMBERS, TARGET_MEMBERS.size + 1)
+            fail()
         } catch (e: IllegalArgumentException) {
             Truth.assertThat(IllegalArgumentException()).isInstanceOf(e::class.java)
         }
