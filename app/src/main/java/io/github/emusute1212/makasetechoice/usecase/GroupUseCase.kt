@@ -1,5 +1,6 @@
 package io.github.emusute1212.makasetechoice.usecase
 
+import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import io.github.emusute1212.makasetechoice.data.entity.Member
 import io.github.emusute1212.makasetechoice.data.repository.GroupDataRepository
@@ -17,8 +18,8 @@ class GroupUseCase @Inject constructor(
 
     @WorkerThread
     fun choiceGroup(members: List<Member>, splitNum: Int) {
-        val groups = members
-            .shuffled()
+        require(splitNum in (1..members.size))
+        val groups = shuffledMember(members)
             .withIndex()
             .groupBy(
                 {
@@ -28,5 +29,10 @@ class GroupUseCase @Inject constructor(
                 }
             )
         repository.saveGroups(groups)
+    }
+
+    @VisibleForTesting
+    fun shuffledMember(members: List<Member>): List<Member> {
+        return members.shuffled()
     }
 }
