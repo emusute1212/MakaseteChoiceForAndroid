@@ -1,6 +1,7 @@
 [versions]
 agp = "8.4.2"
 kotlin = "1.9.0"
+coroutine-test = "1.8.1"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -17,6 +18,8 @@ navigationCompose = "2.7.7"
 googleDevtoolsKsp = "1.9.10-1.0.13"
 maverics = "3.0.9"
 aboutlibraries = "11.2.2"
+mockk = "1.13.12"
+truth = "1.4.4"
 compileSdk = "34"
 minSdk = "24"
 targetSdk = "34"
@@ -51,6 +54,9 @@ mavericks-hilt = { group = "com.airbnb.android", name = "mavericks-hilt", versio
 mavericks-compose = { group = "com.airbnb.android", name = "mavericks-compose", version.ref = "maverics" }
 mavericks-navigation = { group = "com.airbnb.android", name = "mavericks-navigation", version.ref = "maverics" }
 aboutlibraries-compose = { group = "com.mikepenz", name = "aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+coroutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutine-test" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
