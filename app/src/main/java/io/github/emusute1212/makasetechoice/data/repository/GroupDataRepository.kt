@@ -1,5 +1,6 @@
 package io.github.emusute1212.makasetechoice.data.repository
 
+import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import dagger.Module
 import dagger.Provides
@@ -21,7 +22,8 @@ interface GroupDataRepository {
     fun saveGroups(groups: Map<String, List<Member>>)
 }
 
-private class GroupDataRepositoryImpl(
+@VisibleForTesting
+class GroupDataRepositoryImpl(
     private val database: MakaseteChoiceDatabase
 ) : GroupDataRepository {
     private val dao: GroupDao

@@ -1,5 +1,6 @@
 package io.github.emusute1212.makasetechoice.data.repository
 
+import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import dagger.Module
 import dagger.Provides
@@ -22,7 +23,8 @@ interface MemberDataRepository {
     fun deleteMember(member: Member)
 }
 
-private class MemberDataRepositoryImpl(
+@VisibleForTesting
+class MemberDataRepositoryImpl(
     private val database: MakaseteChoiceDatabase
 ) : MemberDataRepository {
     private val dao: MembersDao
