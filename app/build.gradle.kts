@@ -1,5 +1,3 @@
-import java.io.FileWriter
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -74,6 +72,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 
 }
 
@@ -128,6 +131,9 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.truth)
     testImplementation(libs.coroutine.test)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.test.core)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -147,16 +153,4 @@ data class Version(
 ) {
     val code = ((1 + major) * 10000 + minor * 100 + patch) * 100 + rc
     val name = "$major.$minor.$patch.$rc"
-}
-
-fun File.child(childPath: String): File {
-    return File(this, childPath)
-}
-
-fun File.fileWriter(overwrite: Boolean): FileWriter {
-    return FileWriter(this, overwrite)
-}
-
-fun FileWriter.newLine() {
-    write(System.lineSeparator())
 }
