@@ -24,9 +24,9 @@ class GroupUseCaseTest {
         repository.saveGroups(DUMMY_DATA)
 
         val result = useCase.loadGroups().first()
-        val actual = DUMMY_DATA
+        val expected = DUMMY_DATA
 
-        Truth.assertThat(actual).isEqualTo(result)
+        Truth.assertThat(result).isEqualTo(expected)
     }
 
     @Test
@@ -46,11 +46,11 @@ class GroupUseCaseTest {
 
         useCase.choiceGroup(TARGET_MEMBERS, 1)
         val result = useCase.loadGroups().first()
-        val actual = mapOf(
+        val expected = mapOf(
             "グループ1" to TARGET_MEMBERS
         )
 
-        Truth.assertThat(actual).isEqualTo(result)
+        Truth.assertThat(result).isEqualTo(expected)
     }
 
     @Test
@@ -70,7 +70,7 @@ class GroupUseCaseTest {
 
         useCase.choiceGroup(TARGET_MEMBERS, 2)
         val result = useCase.loadGroups().first()
-        val actual = mapOf(
+        val expected = mapOf(
             "グループ1" to TARGET_MEMBERS.filter {
                 it.id in listOf(1, 3, 5)
             },
@@ -79,7 +79,7 @@ class GroupUseCaseTest {
             },
         )
 
-        Truth.assertThat(actual).isEqualTo(result)
+        Truth.assertThat(result).isEqualTo(expected)
     }
 
     @Test
@@ -99,7 +99,7 @@ class GroupUseCaseTest {
 
         useCase.choiceGroup(TARGET_MEMBERS, 4)
         val result = useCase.loadGroups().first()
-        val actual = mapOf(
+        val expected = mapOf(
             "グループ1" to TARGET_MEMBERS.filter {
                 it.id in listOf(1, 5)
             },
@@ -114,7 +114,7 @@ class GroupUseCaseTest {
             },
         )
 
-        Truth.assertThat(actual).isEqualTo(result)
+        Truth.assertThat(result).isEqualTo(expected)
     }
 
     @Test

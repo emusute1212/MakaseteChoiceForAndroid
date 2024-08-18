@@ -47,7 +47,7 @@ class GroupDataRepositoryTest {
             }
 
             // GroupAndMemberで比較すると Deep Comparison が面倒なのでgroupsで比較する
-            Truth.assertThat(groups).isEqualTo(result)
+            Truth.assertThat(result).isEqualTo(groups)
         }
     }
 
@@ -100,7 +100,7 @@ class GroupDataRepositoryTest {
             }
 
             // 二回目のアップデートができていることを確認
-            Truth.assertThat(secondTimeGroups).isEqualTo(secondTimeResult)
+            Truth.assertThat(secondTimeResult).isEqualTo(secondTimeGroups)
         }
     }
 

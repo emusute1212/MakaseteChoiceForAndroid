@@ -32,14 +32,14 @@ class MemberDataRepositoryTest {
             val result = withContext(Dispatchers.IO) {
                 repository.loadMembers().first()
             }
-            val actual = listOf(
+            val expected = listOf(
                 Member(
                     id = 1,
                     name = memberName,
                 )
             )
 
-            Truth.assertThat(actual).isEqualTo(result)
+            Truth.assertThat(result).isEqualTo(expected)
         }
     }
 
@@ -70,7 +70,7 @@ class MemberDataRepositoryTest {
             val result = withContext(Dispatchers.IO) {
                 repository.loadMembers().first()
             }
-            val actual = listOf(
+            val expected = listOf(
                 Member(
                     id = 1,
                     name = memberNames[0],
@@ -81,7 +81,7 @@ class MemberDataRepositoryTest {
                 ),
             )
 
-            Truth.assertThat(actual).isEqualTo(result)
+            Truth.assertThat(result).isEqualTo(expected)
         }
     }
 
