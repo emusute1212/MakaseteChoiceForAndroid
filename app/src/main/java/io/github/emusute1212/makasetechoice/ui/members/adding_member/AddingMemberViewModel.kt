@@ -48,7 +48,7 @@ class AddingMemberViewModel @AssistedInject constructor(
         }
     }
 
-    private enum class ErrorType(
+    enum class ErrorType(
         val errorMessage: String,
     ) {
         EMPTY_MEMBER_NAME(

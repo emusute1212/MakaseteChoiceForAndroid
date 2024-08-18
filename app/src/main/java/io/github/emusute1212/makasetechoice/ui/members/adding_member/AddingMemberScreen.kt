@@ -150,7 +150,7 @@ private fun AddingMember(
             Spacer(modifier = Modifier.width(16.dp))
             MakaseteChoiceButton(
                 label = stringResource(id = R.string.add),
-                enabled = isError.not(),
+                enabled = isError.not() && state.isFirstInputIsFinished,
                 buttonBackgroundColor = MaterialTheme.colorScheme.tertiary,
                 onPress = {
                     onAction(
@@ -164,12 +164,27 @@ private fun AddingMember(
 
 @Composable
 @Preview(
-    name = "Normal mode"
+    name = "First mode"
 )
-fun PreviewAddingMemberScreen() {
+fun PreviewAddingMemberScreenForFirst() {
     MakaseteChoiceTheme {
         AddingMember(
             state = AddingMemberUiState(),
+            onAction = {},
+        )
+    }
+}
+
+@Composable
+@Preview(
+    name = "Normal mode"
+)
+fun PreviewAddingMemberScreenForNormal() {
+    MakaseteChoiceTheme {
+        AddingMember(
+            state = AddingMemberUiState(
+                isFirstInputIsFinished = true,
+            ),
             onAction = {},
         )
     }
@@ -181,9 +196,10 @@ fun PreviewAddingMemberScreen() {
 )
 fun PreviewAddingMemberScreenForError() {
     MakaseteChoiceTheme {
+        val errorType = AddingMemberViewModel.ErrorType.EMPTY_MEMBER_NAME
         AddingMember(
             state = AddingMemberUiState(
-                errorMessageForMemberName = "メンバーの名前が空です"
+                errorMessageForMemberName = errorType.errorMessage
             ),
             onAction = {},
         )

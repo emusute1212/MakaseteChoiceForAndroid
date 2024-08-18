@@ -5,6 +5,7 @@ import com.airbnb.mvrx.MavericksState
 data class AddingMemberUiState(
     val memberName: String = "",
     val errorMessageForMemberName: String? = null,
+    val isFirstInputIsFinished: Boolean = false,
     val result: AddingResult = AddingResult.NOT_STARTED,
 ) : MavericksState
 
