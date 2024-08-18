@@ -15,4 +15,6 @@ val Pink = Color(0xFFFD9090)
 
 val Yellow = Color(0xFFFFF280)
 
+val Red = Color(0xFFD82727)
+
 val Transport = Color(0x7D000000)

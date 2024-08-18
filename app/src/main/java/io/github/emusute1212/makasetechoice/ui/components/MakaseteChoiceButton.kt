@@ -14,6 +14,7 @@ import io.github.emusute1212.makasetechoice.ui.MakaseteChoiceTheme
 fun MakaseteChoiceButton(
     label: String,
     buttonBackgroundColor: Color,
+    enabled: Boolean = true,
     onPress: () -> Unit,
 ) {
     Button(
@@ -21,6 +22,7 @@ fun MakaseteChoiceButton(
             defaultElevation = 2.dp,
             pressedElevation = 0.dp
         ),
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors().copy(
             contentColor = MaterialTheme.colorScheme.onSurface,
             containerColor = buttonBackgroundColor,

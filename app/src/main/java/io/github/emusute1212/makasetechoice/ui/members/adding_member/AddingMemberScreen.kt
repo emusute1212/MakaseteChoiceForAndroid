@@ -84,6 +84,7 @@ private fun AddingMember(
     state: AddingMemberUiState,
     onAction: AddingMemberAction,
 ) {
+    val isError = state.errorMessageForMemberName != null
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -104,6 +105,7 @@ private fun AddingMember(
                 .fillMaxWidth()
                 .align(Alignment.CenterHorizontally),
             value = state.memberName,
+            isError = isError,
             onValueChange = {
                 onAction(
                     AddingMemberUiAction.InputMember(
@@ -122,7 +124,19 @@ private fun AddingMember(
                 )
             }
         )
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = state.errorMessageForMemberName ?: "",
+            style = MaterialTheme.typography.labelSmall.copy(
+                color = MaterialTheme.colorScheme.error,
+            ),
+            modifier = Modifier
+                .padding(
+                    start = 8.dp,
+                )
+                .align(Alignment.Start)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         Row {
             MakaseteChoiceButton(
                 label = stringResource(id = R.string.cancel),
@@ -136,6 +150,7 @@ private fun AddingMember(
             Spacer(modifier = Modifier.width(16.dp))
             MakaseteChoiceButton(
                 label = stringResource(id = R.string.add),
+                enabled = isError.not(),
                 buttonBackgroundColor = MaterialTheme.colorScheme.tertiary,
                 onPress = {
                     onAction(
@@ -148,12 +163,27 @@ private fun AddingMember(
 }
 
 @Composable
-@Preview
+@Preview(
+    name = "Normal mode"
+)
 fun PreviewAddingMemberScreen() {
     MakaseteChoiceTheme {
         AddingMember(
+            state = AddingMemberUiState(),
+            onAction = {},
+        )
+    }
+}
+
+@Composable
+@Preview(
+    name = "Error mode"
+)
+fun PreviewAddingMemberScreenForError() {
+    MakaseteChoiceTheme {
+        AddingMember(
             state = AddingMemberUiState(
-                memberName = "",
+                errorMessageForMemberName = "メンバーの名前が空です"
             ),
             onAction = {},
         )

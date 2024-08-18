@@ -14,6 +14,7 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.InstallIn
 import dagger.multibindings.IntoMap
 import io.github.emusute1212.makasetechoice.data.repository.MemberDataRepository
+import io.github.emusute1212.makasetechoice.ui.members.adding_member.AddingMemberViewModel.ErrorType.Companion.getErrorTypeIfNeed
 
 class AddingMemberViewModel @AssistedInject constructor(
     private val repository: MemberDataRepository,
@@ -22,8 +23,11 @@ class AddingMemberViewModel @AssistedInject constructor(
 
     fun inputMember(currentValue: String) {
         setState {
+            val errorType = currentValue.getErrorTypeIfNeed()
             copy(
                 memberName = currentValue,
+                isFirstInputIsFinished = true,
+                errorMessageForMemberName = errorType?.errorMessage,
             )
         }
     }
@@ -41,6 +45,25 @@ class AddingMemberViewModel @AssistedInject constructor(
             copy(
                 result = AddingResult.FINISH,
             )
+        }
+    }
+
+    private enum class ErrorType(
+        val errorMessage: String,
+    ) {
+        EMPTY_MEMBER_NAME(
+            errorMessage = "メンバーの名前を入力してください"
+        ),
+        ;
+
+        companion object {
+            fun String.getErrorTypeIfNeed(): ErrorType? {
+                return if (isEmpty()) {
+                    EMPTY_MEMBER_NAME
+                } else {
+                    null
+                }
+            }
         }
     }
 
