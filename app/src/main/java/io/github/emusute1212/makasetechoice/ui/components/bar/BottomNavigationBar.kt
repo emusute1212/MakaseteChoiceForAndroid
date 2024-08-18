@@ -51,6 +51,7 @@ fun BottomNavigationBar(
                 selected = navBackStackEntry?.destination?.route == item.route,
                 onClick = {
                     navController.navigate(item.route) {
+                        launchSingleTop = true
                         popUpTo(BottomNavigationMenu.MemberList.route)
                     }
                 }
